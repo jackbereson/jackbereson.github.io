@@ -1,0 +1,52 @@
+{
+  "name": "jackbereson",
+  "version": "1.0.2",
+  "description": "jackbereson.github.io",
+  "author": "jackbereson",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackbereson/jackbereson.github.io"
+  },
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "css:autoprefixer": "postcss -u autoprefixer -r dist/*.css",
+    "css:scss": "node-sass --output-style compressed -o dist src/scss",
+    "css:lint": "stylelint src/scss/*.scss --custom-syntax postcss-scss",
+    "build:css": "npm run css:lint && npm run css:scss && npm run css:autoprefixer",
+    "build:js": "webpack --mode=production",
+    "build:html": "posthtml -c posthtml.json",
+    "build:images": "imagemin src/images/**/* --out-dir=dist/images",
+    "build": "run-s build:*",
+    "serve": "browser-sync start --server \"dist\" --files \"dist\"",
+    "watch:css": "onchange \"src/scss\" -- npm run build:css",
+    "watch:html": "onchange \"src/views\" -- npm run build:html",
+    "watch:images": "onchange \"src/images\" -- npm run build:images",
+    "watch:js": "onchange \"src/js\" -- webpack --mode=development",
+    "watch": "run-p serve watch:*"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "autoprefixer": "^10.4.4",
+    "babel-loader": "^8.2.3",
+    "browser-sync": "^2.27.9",
+    "eslint": "^8.11.0",
+    "eslint-webpack-plugin": "^3.1.1",
+    "htmlnano": "^2.0.0",
+    "imagemin-cli": "^7.0.0",
+    "node-sass": "^7.0.1",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "postcss-cli": "^9.1.0",
+    "postcss-scss": "^4.0.3",
+    "posthtml": "^0.16.6",
+    "posthtml-cli": "^0.10.0",
+    "posthtml-modules": "^0.8.0",
+    "stylelint": "^14.6.0",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "cssnano": "^5.1.13"
+  }
+}
