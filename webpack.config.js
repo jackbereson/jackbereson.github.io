@@ -5,7 +5,7 @@ module.exports = {
     entry: './src/js/main.js',
     plugins: [new ESLintPlugin()],
     output: {
-        path: __dirname + '/dist',
+        path: __dirname + '/docs',
         filename: 'bundle.js'
     },
     module: {

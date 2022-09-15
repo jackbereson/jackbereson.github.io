@@ -1,6 +1,6 @@
 {
     "input": "src/views/*.html",
-    "output": "dist",
+    "output": "docs",
     "plugins": {
         "posthtml-modules": {
             "root": "./src/views",
