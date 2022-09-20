@@ -1,7 +1,9 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "node": 1
+        
     },
     "extends": "eslint:recommended",
     "globals": {
@@ -13,7 +15,6 @@
         "sourceType": "module"
     },
     "rules": {
-        "semi": ["error", "always"],
-        "quotes": ["error", "single"]
+        "semi": ["error", "always"]
     }
 }
