@@ -617,15 +617,43 @@
       border-color: var(--glass-border-strong);
     }
     .venture-avatar {
-      width: 42px; height: 42px;
-      border-radius: 11px;
+      width: 54px; height: 54px;
+      border-radius: 13px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.2,0.7,0.2,1);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+    .venture-card:hover .venture-avatar { transform: scale(1.1) rotate(-4deg); box-shadow: 0 10px 24px rgba(99,102,241,0.35); }
+    .venture-avatar > img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      transition: transform 0.7s cubic-bezier(0.2,0.7,0.2,1);
+    }
+    .venture-card:hover .venture-avatar > img { transform: scale(1.18); }
+    .venture-avatar::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: inherit;
+      opacity: 0.55;
+      mix-blend-mode: multiply;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .venture-avatar .v-letters {
+      position: absolute;
+      inset: 0;
       display: flex; align-items: center; justify-content: center;
       font-weight: 800; font-size: 13px;
-      color: #fff; flex-shrink: 0;
+      color: #fff;
       letter-spacing: -0.02em;
-      transition: transform 0.35s cubic-bezier(0.2,0.7,0.2,1);
+      z-index: 3;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.65), 0 0 2px rgba(0,0,0,0.5);
+      pointer-events: none;
     }
-    .venture-card:hover .venture-avatar { transform: scale(1.08) rotate(-5deg); }
     .venture-body { min-width: 0; flex: 1; }
     .venture-name {
       font-size: 14px; font-weight: 700;
@@ -1790,6 +1818,27 @@
         setTimeout(flashBeam, 600 + Math.random() * 1800);
       }
       setTimeout(flashBeam, 800);
+
+      // ============ INJECT VENTURE AVATAR IMAGES ============
+      document.querySelectorAll('.venture-avatar').forEach(el => {
+        const link = el.closest('a.venture-card');
+        let slug = 'default';
+        if (link && link.href) {
+          const parts = link.href.split('/').filter(Boolean);
+          slug = parts[parts.length - 1].toLowerCase();
+        }
+        const letters = (el.textContent || '').trim();
+        const img = document.createElement('img');
+        img.src = 'https://picsum.photos/seed/' + encodeURIComponent(slug) + '/120/120';
+        img.alt = '';
+        img.loading = 'lazy';
+        el.innerHTML = '';
+        el.appendChild(img);
+        const span = document.createElement('span');
+        span.className = 'v-letters';
+        span.textContent = letters;
+        el.appendChild(span);
+      });
 
       // ============ SCROLL PROGRESS BAR + BRAND ORBIT ============
       const progress = document.getElementById('scrollProgress');
