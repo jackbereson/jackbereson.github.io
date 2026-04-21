@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jack Bereson — Resume</title>
+  <meta name="description" content="Jack Bereson — Fullstack JS / DevOps / Blockchain engineer. 14+ years of experience across Vietnam, Japan, Korea and Canada." />
+  <meta name="theme-color" content="#05060f" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #05060f;
+      --bg-2: #0a0a14;
+      --ink: #f1f5f9;
+      --ink-2: rgba(255,255,255,0.78);
+      --ink-3: rgba(255,255,255,0.58);
+      --ink-4: rgba(255,255,255,0.36);
+      --glass-bg: rgba(255,255,255,0.05);
+      --glass-border: rgba(255,255,255,0.10);
+      --glass-border-strong: rgba(255,255,255,0.18);
+      --accent: #6366f1;
+      --accent-2: #a855f7;
+      --accent-3: #ec4899;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 15% 10%, rgba(99,102,241,0.18), transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 15%, rgba(168,85,247,0.14), transparent 60%),
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(236,72,153,0.10), transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: radial-gradient(circle, rgba(148,163,255,0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, black 0%, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, black 0%, black 85%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+
+    /* ================ NAV ================ */
+    nav.nav {
+      position: sticky; top: 20px;
+      z-index: 50;
+      margin: 20px auto 0;
+      width: calc(100% - 40px);
+      max-width: 1080px;
+      background: rgba(15,17,28,0.6);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 20px; gap: 16px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--ink);
+    }
+    .brand-mark {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 13px; color: #fff;
+      box-shadow: 0 4px 12px rgba(99,102,241,0.4);
+    }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .brand-name { font-size: 14px; font-weight: 700; }
+    .brand-sub { font-size: 11px; color: var(--ink-3); }
+
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+
+    /* Pill menu (shared with index) */
+    nav.menu {
+      display: flex; align-items: center; gap: 4px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px; padding: 4px;
+    }
+    nav.menu a {
+      padding: 8px 14px; font-size: 13px; font-weight: 500;
+      color: var(--ink-2); text-decoration: none; border-radius: 999px;
+      transition: all 0.2s;
+    }
+    nav.menu a:hover { color: var(--ink); background: rgba(255,255,255,0.08); }
+    nav.menu a.active { color: var(--ink); background: rgba(255,255,255,0.14); }
+    @media (max-width: 860px) { nav.menu { display: none; } }
+    .btn-ghost, .btn-solid {
+      padding: 9px 16px; font-size: 13px; font-weight: 600;
+      text-decoration: none; border-radius: 10px;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-ghost {
+      color: var(--ink); background: var(--glass-bg);
+      border: 1px solid var(--glass-border-strong);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+    .btn-solid {
+      color: #0a0a0a; background: #fff; border: none;
+    }
+    .btn-solid:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(255,255,255,0.2); }
+    .btn-ghost svg, .btn-solid svg { width: 14px; height: 14px; }
+
+    @media (max-width: 640px) {
+      .brand-sub { display: none; }
+      .btn-ghost { display: none; }
+    }
+
+    /* ================ HEADER ================ */
+    .header {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--glass-border);
+      margin-bottom: 56px;
+    }
+    .header-kicker {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .header h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      padding-bottom: 4px;
+    }
+    .header .tagline {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink-2);
+      margin-bottom: 32px;
+      display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+    }
+    .tagline .chip {
+      padding: 5px 12px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(168,85,247,0.15));
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 8px;
+      font-size: 13px;
+      color: #a5b4fc;
+    }
+    .tagline .sep { color: var(--ink-4); }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+    }
+    .contact-item:hover { border-color: var(--glass-border-strong); background: rgba(255,255,255,0.08); }
+    .contact-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 16px; height: 16px; color: #fff; }
+    .contact-label {
+      font-size: 11px; color: var(--ink-3);
+      text-transform: uppercase; letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+    .contact-value { font-size: 14px; font-weight: 600; color: var(--ink); }
+
+    /* ================ SUMMARY ================ */
+    .summary {
+      font-size: 15.5px;
+      color: var(--ink-2);
+      line-height: 1.75;
+      padding: 28px 32px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      border-left: 3px solid var(--accent);
+      margin-bottom: 56px;
+    }
+    .summary strong { color: var(--ink); font-weight: 600; }
+
+    /* ================ SECTION ================ */
+    .section { margin-bottom: 64px; }
+    .section-title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 8px;
+    }
+    .section-heading {
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 36px;
+      line-height: 1.1;
+    }
+
+    /* ================ EXPERIENCE TIMELINE ================ */
+    .exp {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 32px;
+      padding-bottom: 40px;
+      position: relative;
+    }
+    .exp:not(:last-child) {
+      border-bottom: 1px dashed var(--glass-border);
+      margin-bottom: 40px;
+    }
+    .exp-side {
+      position: sticky;
+      top: 110px;
+      align-self: start;
+    }
+    .exp-year {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #ffffff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .exp-duration {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--ink-3);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .exp-dot {
+      position: absolute;
+      left: 140px;
+      top: 8px;
+      width: 10px; height: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      border-radius: 50%;
+      transform: translateX(-5px);
+      box-shadow: 0 0 0 4px rgba(99,102,241,0.15), 0 0 12px rgba(236,72,153,0.5);
+    }
+
+    .exp-main { padding-left: 20px; }
+    .exp-company {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      margin-bottom: 4px;
+    }
+    .exp-role {
+      font-size: 15px;
+      color: #a5b4fc;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .exp-summary {
+      font-size: 14px;
+      color: var(--ink-2);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* Projects within a role */
+    .proj {
+      padding: 20px 24px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      margin-bottom: 12px;
+      transition: all 0.2s;
+    }
+    .proj:hover { border-color: var(--glass-border-strong); background: rgba(255,255,255,0.06); }
+    .proj-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 14px; margin-bottom: 10px; flex-wrap: wrap;
+    }
+    .proj-name {
+      font-size: 15px; font-weight: 700; color: var(--ink);
+    }
+    .proj-link {
+      font-size: 12px;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      text-decoration: none;
+    }
+    .proj-link:hover { color: var(--accent-3); text-decoration: underline; }
+    .proj-bullets {
+      list-style: none; padding: 0; margin: 0 0 14px;
+    }
+    .proj-bullets li {
+      font-size: 13.5px;
+      color: var(--ink-2);
+      line-height: 1.6;
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+    .proj-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 9px;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+    .stack-tags {
+      display: flex; flex-wrap: wrap; gap: 5px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--glass-border);
+    }
+    .stack-tags span {
+      padding: 3px 9px;
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 6px;
+      font-size: 11px;
+      color: #c4b5fd;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+    }
+    .stack-tags span.cat-fe { background: rgba(99,102,241,0.12); color: #a5b4fc; border-color: rgba(99,102,241,0.3); }
+    .stack-tags span.cat-be { background: rgba(236,72,153,0.12); color: #f9a8d4; border-color: rgba(236,72,153,0.3); }
+    .stack-tags span.cat-db { background: rgba(16,185,129,0.12); color: #6ee7b7; border-color: rgba(16,185,129,0.3); }
+    .stack-tags span.cat-ops { background: rgba(6,182,212,0.12); color: #67e8f9; border-color: rgba(6,182,212,0.3); }
+    .stack-tags span.cat-web3 { background: rgba(245,158,11,0.12); color: #fcd34d; border-color: rgba(245,158,11,0.3); }
+
+    /* Bullets list outside of project (for roles that don't need per-project breakdown) */
+    .bullets {
+      list-style: none; padding: 0; margin: 0;
+    }
+    .bullets li {
+      font-size: 14px;
+      color: var(--ink-2);
+      line-height: 1.65;
+      padding-left: 22px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0; top: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ================ FOOTER ================ */
+    footer {
+      padding: 40px 0 48px;
+      border-top: 1px solid var(--glass-border);
+      font-size: 13px;
+      color: var(--ink-4);
+      margin-top: 40px;
+    }
+    footer .container {
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    footer a { color: var(--ink-3); text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+
+    @media (max-width: 768px) {
+      .exp { grid-template-columns: 1fr; gap: 12px; }
+      .exp-side { position: static; }
+      .exp-year { font-size: 22px; }
+      .exp-dot { display: none; }
+      .exp-main { padding-left: 0; }
+      .header { padding: 56px 0 40px; }
+    }
+
+    /* Print styles */
+    @media print {
+      body::before, body::after, nav.nav { display: none !important; }
+      body { background: #fff; color: #000; }
+      * { color: #000 !important; }
+      .container { max-width: 100%; padding: 0 20px; }
+      .proj, .summary, .contact-item { background: #f8f8f8; border-color: #ddd; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <section class="header">
+    <div class="header-kicker">// Resume · Updated 2026</div>
+    <h1>Jack Bereson</h1>
+    <div class="tagline">
+      <span class="chip">Fullstack JS</span>
+      <span class="sep">·</span>
+      <span class="chip">DevOps</span>
+      <span class="sep">·</span>
+      <span class="chip">Blockchain</span>
+      <span class="sep">·</span>
+      <span>14+ years experience</span>
+    </div>
+
+    <div class="contact-row">
+      <a href="mailto:jackbereson@gmail.com" class="contact-item">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="contact-label">Email</div><div class="contact-value">jackbereson@gmail.com</div></div>
+      </a>
+      <a href="https://github.com/jackbereson" target="_blank" class="contact-item">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div>
+        <div><div class="contact-label">GitHub</div><div class="contact-value">@jackbereson</div></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <div class="summary">
+    I have <strong>14+ years of software engineering experience</strong>, shipping products across web, mobile, blockchain and cloud-native infrastructure. My stack spans <strong>Node.js, React/Next.js, TypeScript, Docker DevOps</strong> and secondary languages like <strong>.NET MVC, Angular, PHP/Laravel, Python, Solidity</strong>. I've worked across startups and corporations in Vietnam, Japan, Korea and Canada — from outsourcing projects to large-scale CRM and crypto platforms. Currently focused on building production Web3 products and maintaining 90+ open-source repositories under 29 organizations.
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section class="section">
+    <div class="section-title">// 01 · Experience</div>
+    <h2 class="section-heading">Work history</h2>
+
+    <!-- Freelancer Blockchain -->
+    <div class="exp">
+      <div class="exp-dot"></div>
+      <div class="exp-side">
+        <div class="exp-year">Now</div>
+        <div class="exp-duration">2022 — Present</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-company">Freelancer — Blockchain Developer</div>
+        <div class="exp-role">Fullstack · Smart Contracts · Infrastructure</div>
+        <div class="exp-summary">
+          Independent contractor building Web3 platforms for Vietnamese and international companies — from crypto news portals to token launchpads and NFT marketplaces.
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">iCryptoBook</div>
+            <a href="https://icryptobook.com" target="_blank" class="proj-link">icryptobook.com ↗</a>
+          </div>
+          <ul class="proj-bullets">
+            <li>Cryptocurrency news portal with mobile app (React Native).</li>
+            <li>News content management system for editors.</li>
+            <li>Team of 3 developers. Fullstack development + operations.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-be">Node.js</span><span class="cat-be">Mongoose</span><span class="cat-be">GraphQL</span><span class="cat-be">RxJS</span><span class="cat-be">TypeScript</span>
+            <span class="cat-db">MongoDB</span><span class="cat-be">Agenda.js</span>
+            <span class="cat-fe">React</span><span class="cat-fe">Next.js</span><span class="cat-fe">Tailwind</span><span class="cat-fe">React Native</span>
+            <span class="cat-ops">Docker Swarm</span><span class="cat-ops">Portainer</span><span class="cat-ops">GitHub Actions</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">AtherSphere dApp</div>
+            <a href="https://dapp.athersphere.com" target="_blank" class="proj-link">dapp.athersphere.com ↗</a>
+          </div>
+          <ul class="proj-bullets">
+            <li>ICO token sale with BNB, airdrop, NFT marketplace on Matic / Polygon.</li>
+            <li>Smart contracts: ERC20 tokens + ERC721 NFTs. Admin dashboard for token/NFT/transaction management.</li>
+            <li>Integrated 3rd-party RPCs — Getblock, Ankr, Quicknode — across ETH, Polygon, BSC and Arbitrum (Layer 2).</li>
+            <li>Solo developer: fullstack build + operations.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-web3">Solidity</span><span class="cat-web3">Hardhat</span><span class="cat-web3">Remix</span><span class="cat-web3">Web3.js</span>
+            <span class="cat-web3">ERC20</span><span class="cat-web3">ERC721</span><span class="cat-web3">Arbitrum</span><span class="cat-web3">Polygon</span><span class="cat-web3">BSC</span>
+            <span class="cat-be">Node.js</span><span class="cat-be">GraphQL</span><span class="cat-be">TypeScript</span>
+            <span class="cat-fe">Next.js</span><span class="cat-ops">Docker Swarm</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">DCEight</div>
+            <a href="https://dc8.io" target="_blank" class="proj-link">dc8.io ↗</a>
+          </div>
+          <ul class="proj-bullets">
+            <li>NFT launchpad with unlock packages, airdrop, listing and trade on Ethereum.</li>
+            <li>Leverages Arbitrum Layer 2 to reduce gas fees for NFT transactions.</li>
+            <li>ERC1155 smart contracts, full admin panel for NFT/token management.</li>
+            <li>Team of 2 developers.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-web3">Solidity</span><span class="cat-web3">ERC1155</span><span class="cat-web3">Hardhat</span><span class="cat-web3">Arbitrum</span><span class="cat-web3">ETH</span>
+            <span class="cat-be">Node.js</span><span class="cat-be">GraphQL</span><span class="cat-fe">Next.js</span>
+            <span class="cat-ops">Docker Swarm</span><span class="cat-ops">Portainer</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">MyStarter</div>
+            <a href="https://mystarter.io" target="_blank" class="proj-link">mystarter.io ↗</a>
+          </div>
+          <ul class="proj-bullets">
+            <li>ICO launchpad on BSC — token sale, airdrop, NFT listing and trading with BNB.</li>
+            <li>Smart contracts: ERC20 + ERC1155. Admin dashboard.</li>
+            <li>Team of 3 developers.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-web3">Solidity</span><span class="cat-web3">ERC20</span><span class="cat-web3">ERC1155</span><span class="cat-web3">BSC</span>
+            <span class="cat-be">Node.js</span><span class="cat-be">GraphQL</span><span class="cat-fe">Next.js</span>
+            <span class="cat-ops">Docker Swarm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- K-Group -->
+    <div class="exp">
+      <div class="exp-dot"></div>
+      <div class="exp-side">
+        <div class="exp-year">2021</div>
+        <div class="exp-duration">2021 — 2022 · 1 yr</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-company">K-Group Asia</div>
+        <div class="exp-role">Senior Frontend Developer · Team Lead</div>
+        <div class="exp-summary">
+          Led the frontend team (React · Next.js · Tailwind · DevOps) on two Web3-adjacent products. Responsible for architecture decisions, code reviews and CI/CD pipelines.
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">k-id.global</div>
+            <a href="https://k-id.global" target="_blank" class="proj-link">k-id.global ↗</a>
+          </div>
+          <ul class="proj-bullets">
+            <li>E-commerce platform similar to Shopee with seller/admin dashboards.</li>
+            <li>Gamification: spin-the-wheel for promotions, loyalty points for purchases.</li>
+            <li>BSC smart contract integration for blockchain-based rewards.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-fe">React</span><span class="cat-fe">Next.js</span><span class="cat-fe">Tailwind</span><span class="cat-fe">Styled Components</span><span class="cat-fe">TypeScript</span>
+            <span class="cat-web3">Solidity</span><span class="cat-web3">BSC</span><span class="cat-ops">Docker Swarm</span><span class="cat-ops">Portainer</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">KBG Studio</div>
+            <a href="https://www.kbgstudio.com" target="_blank" class="proj-link">kbgstudio.com ↗</a>
+          </div>
+          <ul class="proj-bullets">
+            <li>Marketing site for a blockchain gaming studio — game showcase and trailer.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-fe">React</span><span class="cat-fe">Next.js</span><span class="cat-fe">Tailwind</span><span class="cat-fe">TypeScript</span>
+            <span class="cat-ops">Docker Swarm</span><span class="cat-ops">Portainer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Freelancer 123lotto -->
+    <div class="exp">
+      <div class="exp-dot"></div>
+      <div class="exp-side">
+        <div class="exp-year">2021</div>
+        <div class="exp-duration">2021 — 2022</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-company">Freelancer</div>
+        <div class="exp-role">Blockchain · JS Fullstack · DevOps</div>
+        <div class="exp-summary">Solo fullstack contract for a Canadian partner — SEO-optimized lottery exchange with integrated payments.</div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">123Lotto.ca</div>
+            <a href="https://123lotto.ca" target="_blank" class="proj-link">123lotto.ca ↗</a>
+          </div>
+          <ul class="proj-bullets">
+            <li>Canadian lottery exchange — still in production.</li>
+            <li>Next.js for SEO, Node.js core API, admin dashboard.</li>
+            <li>Integrated payment gateways — PayPal + eTransfer.</li>
+            <li>Full Docker Swarm + Portainer production setup.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-be">Node.js</span><span class="cat-be">Mongoose</span><span class="cat-be">GraphQL</span><span class="cat-be">TypeScript</span><span class="cat-be">Agenda.js</span>
+            <span class="cat-db">MongoDB</span>
+            <span class="cat-fe">React</span><span class="cat-fe">Next.js</span><span class="cat-fe">Tailwind</span>
+            <span class="cat-ops">Docker Swarm</span><span class="cat-ops">Portainer</span><span class="cat-ops">CI/CD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mcom Solution -->
+    <div class="exp">
+      <div class="exp-dot"></div>
+      <div class="exp-side">
+        <div class="exp-year">2020</div>
+        <div class="exp-duration">2020 — 2021 · 1 yr</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-company">Mcom Solution</div>
+        <div class="exp-role">JavaScript Leader · Backend</div>
+        <div class="exp-summary">Led backend JavaScript development across two production e-commerce systems.</div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">Khothuocsi — wholesale drug marketplace</div>
+            <a href="https://khothuocsi.vn" target="_blank" class="proj-link">khothuocsi.vn ↗</a>
+          </div>
+          <ul class="proj-bullets">
+            <li>Drug catalog, ordering, medication &amp; prescription management.</li>
+            <li>Content management, drug-sales statistics and reporting.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-be">Node.js</span><span class="cat-be">GraphQL</span><span class="cat-be">RxJS</span><span class="cat-be">TypeScript</span>
+            <span class="cat-db">MongoDB</span><span class="cat-ops">Docker Swarm</span><span class="cat-ops">Portainer</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">PShop — HCM Post e-commerce</div>
+            <a href="https://pshop.hcmpost.vn" target="_blank" class="proj-link">pshop.hcmpost.vn ↗</a>
+          </div>
+          <ul class="proj-bullets">
+            <li>Full e-commerce platform — product listing, ordering, store management.</li>
+            <li>Order lifecycle, revenue reporting, multi-store admin.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-be">Node.js</span><span class="cat-be">GraphQL</span><span class="cat-be">TypeScript</span>
+            <span class="cat-db">MongoDB</span><span class="cat-fe">React</span><span class="cat-fe">Next.js</span>
+            <span class="cat-ops">Docker Swarm</span><span class="cat-ops">Portainer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bcore -->
+    <div class="exp">
+      <div class="exp-dot"></div>
+      <div class="exp-side">
+        <div class="exp-year">2019</div>
+        <div class="exp-duration">2019 — 2020 · 1 yr</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-company">Bcore</div>
+        <div class="exp-role">Web Developer · Full-time · Crypto Exchange Startup</div>
+        <div class="exp-summary">
+          Early engineer at a cryptocurrency exchange startup. Managed, maintained and extended the Bcash exchange, built an intermediary payment gateway, and developed the corporate website.
+        </div>
+        <ul class="bullets">
+          <li>Developed &amp; operated <strong>bcash.exchange</strong> — a crypto exchange platform.</li>
+          <li>Built <strong>gateway.bcashpay.org</strong> — intermediary payment gateway for virtual currency transactions.</li>
+          <li>Developed corporate site <strong>trfxinternational.com</strong> in React + TypeScript.</li>
+          <li>Deployed ETH and BTC node networks on Linux. Connected to ETH chain via Web3.js.</li>
+          <li>Worked with distributed networks, Hyperledger, dApps and blockchain fundamentals.</li>
+          <li>Additional outsourcing projects — PHP, Laravel, WordPress.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bloodland -->
+    <div class="exp">
+      <div class="exp-dot"></div>
+      <div class="exp-side">
+        <div class="exp-year">2017</div>
+        <div class="exp-duration">2017 — 2019 · 2 yrs</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-company">Bloodland · Korean Startup</div>
+        <div class="exp-role">Web Developer · Full-time</div>
+        <div class="exp-summary">
+          Developed and operated the <strong>Blood.land</strong> webgame plus supporting React Native mobile apps. Full-cycle involvement — ideation, UI design, backend, gameplay and ops.
+        </div>
+        <ul class="bullets">
+          <li>Proposed product ideas and designed interfaces.</li>
+          <li>Frontend architecture with React — replaced Google Maps with Leaflet for cost.</li>
+          <li>Backend API in Node.js + Express with 3-layer model.</li>
+          <li>MongoDB + Mongoose for schema-based data modeling.</li>
+          <li>Built React Native mobile companion apps.</li>
+          <li>Team collaboration via Trello and Git.</li>
+          <li>Real-time webgame deployed on Ubuntu servers.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Aureole -->
+    <div class="exp">
+      <div class="exp-dot"></div>
+      <div class="exp-side">
+        <div class="exp-year">2015</div>
+        <div class="exp-duration">2015 — 2017 · 2 yrs</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-company">Aureole Information Technology</div>
+        <div class="exp-role">Web Developer · Japanese Group (Mitani Sangyo)</div>
+        <div class="exp-summary">
+          Worked across multiple enterprise Japanese HR products — payroll, timekeeping, autotest automation and corporate websites.
+        </div>
+
+        <div class="proj">
+          <div class="proj-name">Kyuyo Payroll Software (1 year)</div>
+          <ul class="proj-bullets">
+            <li>Waterfall development with Redmine for bug/issue/task tracking.</li>
+            <li>C# + .NET MVC 4 + RESTful APIs. 3-layer architecture with Entity Framework for SQL ↔ class mapping.</li>
+            <li>Frontend with AngularJS + Bootstrap 3 + AdminLTE.</li>
+            <li>Deployed via IIS. SVN for source control.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-be">C#</span><span class="cat-be">.NET MVC 4</span><span class="cat-be">Entity Framework</span>
+            <span class="cat-fe">AngularJS</span><span class="cat-fe">Bootstrap 3</span><span class="cat-fe">jQuery</span>
+            <span class="cat-db">MSSQL</span><span class="cat-ops">IIS</span><span class="cat-ops">SVN</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-name">Kintai Timekeeping (6 months) + HR Outsourcing</div>
+          <ul class="proj-bullets">
+            <li>Timekeeping software, HR &amp; statistics tools, corporate websites.</li>
+          </ul>
+        </div>
+
+        <div class="proj">
+          <div class="proj-name">PowerEgg Autotest (1 year)</div>
+          <ul class="proj-bullets">
+            <li>Built Selenium Python autotest suite for PowerEgg (1000+ test cases).</li>
+            <li>Jenkins CI — auto build, deploy, test and report via Git triggers.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-be">Python</span><span class="cat-be">Selenium</span><span class="cat-ops">Jenkins</span><span class="cat-ops">Chrome Driver</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plwindow -->
+    <div class="exp">
+      <div class="exp-dot"></div>
+      <div class="exp-side">
+        <div class="exp-year">2014</div>
+        <div class="exp-duration">2014 — 2015 · 1 yr</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-company">Phu Luong — Plwindow</div>
+        <div class="exp-role">Web Application Developer · Full-time</div>
+        <div class="exp-summary">
+          Built <strong>plwindow.vn</strong> and the production web-app for plastic door price-bomb calculator.
+        </div>
+        <ul class="bullets">
+          <li>UI ideation &amp; design with Photoshop.</li>
+          <li>C# + .NET MVC 4 + 3-layer architecture + Entity Framework.</li>
+          <li>MSSQL database design with stored procedures for business logic.</li>
+          <li>Cloudflare DNS, IIS deployment.</li>
+          <li>Frontend with Bootstrap 3 + jQuery.</li>
+          <li>Source control via SVN.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Vietnamese Military -->
+    <div class="exp">
+      <div class="exp-dot"></div>
+      <div class="exp-side">
+        <div class="exp-year">2012</div>
+        <div class="exp-duration">2012 — 2014 · 2 yrs</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-company">Vietnamese Military</div>
+        <div class="exp-role">Soldier · Mandatory National Service</div>
+        <div class="exp-summary">Two years of mandatory military service. Discipline, leadership and teamwork foundation.</div>
+      </div>
+    </div>
+
+    <!-- VietConnect -->
+    <div class="exp">
+      <div class="exp-dot"></div>
+      <div class="exp-side">
+        <div class="exp-year">2011</div>
+        <div class="exp-duration">2011 — 2012 · 1 yr</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-company">VietConnect</div>
+        <div class="exp-role">Web Developer · Outsource (AkzoNobel HR)</div>
+        <div class="exp-summary">Human Resource website programming — outsourced project for AkzoNobel.</div>
+        <ul class="bullets">
+          <li>Project setup and C# + HTML/CSS coding.</li>
+          <li>Deployment via IIS, source control with SVN.</li>
+          <li>3-layer code management pattern with MSSQL.</li>
+          <li>Database design with stored procedures.</li>
+          <li>SOAP web services consumed via AJAX.</li>
+          <li>jQuery-driven UI effects. First exposure to team-based hiring processes.</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CORE SKILLS -->
+  <section class="section">
+    <div class="section-title">// 02 · Core Competencies</div>
+    <h2 class="section-heading">Technical arsenal</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+      <div class="proj">
+        <div class="proj-name" style="margin-bottom:12px;color:#a5b4fc;">Fullstack JS</div>
+        <div class="stack-tags" style="border-top:none;padding-top:0;">
+          <span class="cat-fe">React</span><span class="cat-fe">Next.js</span><span class="cat-fe">React Native</span><span class="cat-fe">Angular</span>
+          <span class="cat-be">Node.js</span><span class="cat-be">NestJS</span><span class="cat-be">Express</span><span class="cat-be">GraphQL</span><span class="cat-be">TypeScript</span><span class="cat-be">RxJS</span>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-name" style="margin-bottom:12px;color:#f9a8d4;">Blockchain / Web3</div>
+        <div class="stack-tags" style="border-top:none;padding-top:0;">
+          <span class="cat-web3">Solidity</span><span class="cat-web3">Hardhat</span><span class="cat-web3">Remix</span><span class="cat-web3">Web3.js</span>
+          <span class="cat-web3">ERC20</span><span class="cat-web3">ERC721</span><span class="cat-web3">ERC1155</span>
+          <span class="cat-web3">ETH</span><span class="cat-web3">BSC</span><span class="cat-web3">Polygon</span><span class="cat-web3">Arbitrum</span><span class="cat-web3">TON</span>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-name" style="margin-bottom:12px;color:#67e8f9;">DevOps / Cloud</div>
+        <div class="stack-tags" style="border-top:none;padding-top:0;">
+          <span class="cat-ops">Docker</span><span class="cat-ops">Docker Swarm</span><span class="cat-ops">Kubernetes</span><span class="cat-ops">Portainer</span>
+          <span class="cat-ops">Terraform</span><span class="cat-ops">Pulumi</span><span class="cat-ops">AWS</span><span class="cat-ops">GCP</span><span class="cat-ops">DigitalOcean</span>
+          <span class="cat-ops">GitHub Actions</span><span class="cat-ops">Jenkins</span><span class="cat-ops">Cloudflare</span><span class="cat-ops">Nginx</span>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-name" style="margin-bottom:12px;color:#6ee7b7;">Databases / Backend</div>
+        <div class="stack-tags" style="border-top:none;padding-top:0;">
+          <span class="cat-db">MongoDB</span><span class="cat-db">PostgreSQL</span><span class="cat-db">MySQL</span><span class="cat-db">MSSQL</span>
+          <span class="cat-db">Redis</span><span class="cat-db">Kafka</span>
+          <span class="cat-be">Python</span><span class="cat-be">FastAPI</span><span class="cat-be">Java</span><span class="cat-be">Spring</span><span class="cat-be">C#</span><span class="cat-be">.NET</span><span class="cat-be">PHP</span><span class="cat-be">Laravel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section class="section">
+    <div class="section-title">// 03 · Languages &amp; Work Culture</div>
+    <h2 class="section-heading">Across borders</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;">
+      <div class="proj">
+        <div class="proj-name">🇻🇳 Vietnamese — Native</div>
+      </div>
+      <div class="proj">
+        <div class="proj-name">🇬🇧 English — Professional working</div>
+      </div>
+      <div class="proj">
+        <div class="proj-name">🇯🇵 Japanese corporate experience</div>
+        <ul class="proj-bullets" style="margin-top:8px;"><li>2 years at Mitani Sangyo (Aureole IT). Waterfall + Redmine workflow.</li></ul>
+      </div>
+      <div class="proj">
+        <div class="proj-name">🇰🇷 Korean startup experience</div>
+        <ul class="proj-bullets" style="margin-top:8px;"><li>2 years at Bloodland startup — agile, full-cycle product development.</li></ul>
+      </div>
+      <div class="proj">
+        <div class="proj-name">🇨🇦 Canadian freelance partnership</div>
+        <ul class="proj-bullets" style="margin-top:8px;"><li>Ongoing contract with Canadian partner (123Lotto.ca).</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="text-align:center;padding:48px 32px;background:linear-gradient(135deg,rgba(99,102,241,0.08),rgba(236,72,153,0.08));border:1px solid var(--glass-border-strong);border-radius:20px;">
+    <h2 style="font-size:1.8rem;font-weight:800;margin-bottom:12px;letter-spacing:-0.02em;">Let's build something.</h2>
+    <p style="color:var(--ink-2);margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto;">Open to senior engineering roles, fractional CTO engagements, and blockchain / fullstack consulting.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:jackbereson@gmail.com" class="btn-solid" style="padding:12px 22px;">Get in touch →</a>
+      <a href="./index.html" class="btn-ghost" style="padding:12px 22px;">Back to portfolio</a>
+    </div>
+  </section>
+
+</div>
+
+<div id="site-footer"></div>
+
+<script src="./common.js"></script>
+</body>
+</html>

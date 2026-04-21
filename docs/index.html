@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jack Bereson — Senior Fullstack Engineer</title>
-  <meta name="description" content="Le Thanh Vuong (Jack Bereson) — Senior Fullstack Engineer. 10+ years building scalable web, mobile, Web3 and cloud platforms." />
+  <meta name="description" content="Jack Bereson — Senior Fullstack Engineer. 10+ years building scalable web, mobile, Web3 and cloud platforms." />
   <meta name="theme-color" content="#0a0a0a" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
@@ -1361,31 +1361,8 @@
   <div class="cursor-ring" id="cursorRing"></div>
   <div class="cursor-dot" id="cursorDot"></div>
 
-  <!-- ================== NAV ================== -->
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="#" class="brand">
-        <span class="brand-mark">JB</span>
-        <span class="brand-text">
-          <span class="brand-name">Jack Bereson</span>
-          <span class="brand-sub">Senior Fullstack Engineer</span>
-        </span>
-      </a>
-      <nav class="menu">
-        <a href="#work" class="active">Work</a>
-        <a href="#lab">Lab</a>
-        <a href="#stack">Stack</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="nav-actions">
-        <a href="https://github.com/jackbereson" target="_blank" class="btn-ghost">GitHub</a>
-        <a href="./le-thanh-vuong-js-fullstack-blockchain.pdf" target="_blank" class="btn-solid">
-          Résumé
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
-    </div>
-  </header>
+  <!-- ================== NAV (injected by common.js) ================== -->
+  <div id="site-header"></div>
 
   <!-- ================== STAGE (HERO + TECH BG) ================== -->
   <section class="stage">
@@ -1791,15 +1768,12 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="site-foot">
-      <div class="container">
-        <div>© <span id="year"></span> Le Thanh Vuong — Jack Bereson. All rights reserved.</div>
-        <div><a href="https://github.com/jackbereson/jackbereson.github.io" target="_blank">Source on GitHub ↗</a></div>
-      </div>
-    </footer>
+    <!-- FOOTER (injected by common.js) -->
+    <div id="site-footer"></div>
 
   </main>
+
+  <script src="./common.js"></script>
 
   <script>
     (function () {
@@ -2054,8 +2028,6 @@
         });
       });
 
-      // Year
-      document.getElementById('year').textContent = new Date().getFullYear();
     })();
   </script>
 </body>
