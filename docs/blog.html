@@ -255,6 +255,9 @@
     /* Featured card in hero */
     .hf-card {
       position: relative;
+      display: block;
+      text-decoration: none;
+      color: inherit;
       background: rgba(255,255,255,0.055);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
@@ -960,10 +963,10 @@
 
       wrap.innerHTML = top.map((p, i) => {
         const acc = HF_ACCENTS[i % HF_ACCENTS.length];
+        const href = `./blog-post.html?id=${encodeURIComponent(p._id)}&amp;slug=${encodeURIComponent(p.slug || '')}`;
         return `
-          <article class="hf-card"
-            style="--hf-accent:${acc.grad}"
-            data-href="./blog-post.html?id=${encodeURIComponent(p._id)}&amp;slug=${encodeURIComponent(p.slug || '')}">
+          <a class="hf-card" href="${href}"
+            style="--hf-accent:${acc.grad}">
             <div class="hf-top">
               <span class="hf-cat" style="background:${acc.text};-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">
                 ${p.category || 'GENERAL'}
@@ -981,7 +984,7 @@
                 <path d="M1 6h10M6 1l5 5-5 5"/>
               </svg>
             </div>
-          </article>`;
+          </a>`;
       }).join('');
 
       /* Mouse spotlight per card */
@@ -1036,9 +1039,9 @@
       const cat     = catKey(post.category);
       const row2    = (span === 12 || span === 6) ? 'row-2' : '';
 
+      const href = `./blog-post.html?id=${encodeURIComponent(post._id)}&amp;slug=${encodeURIComponent(post.slug || '')}`;
       return `
-        <article class="blog-card span-${span} ${row2}" data-cat="${cat}"
-            data-href="./blog-post.html?id=${encodeURIComponent(post._id)}&amp;slug=${encodeURIComponent(post.slug || '')}">
+        <a class="blog-card span-${span} ${row2}" data-cat="${cat}" href="${href}">
           ${post.coverImage ? `<div class="blog-img" style="background-image:url('${post.coverImage}')"></div>` : ''}
           <div class="blog-tint"></div>
           <div class="blog-pattern"></div>
@@ -1064,7 +1067,7 @@
               <path d="M2 7h10M7 2l5 5-5 5"/>
             </svg>
           </div>
-        </article>`;
+        </a>`;
     }
 
     /* ─── RENDER BATCH ────────────────────────────── */
@@ -1098,14 +1101,6 @@
     }
 
     document.getElementById('btn-load').onclick = renderBatch;
-
-    /* ─── CARD NAVIGATION (delegated) ─────────────── */
-    document.addEventListener('click', e => {
-      const el = e.target.closest('[data-href]');
-      if (!el) return;
-      const href = el.getAttribute('data-href');
-      if (href) location.href = href;
-    });
 
     /* ─── API STATUS BADGE ────────────────────────── */
     function setBadge(state) {
