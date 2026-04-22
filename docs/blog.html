@@ -963,7 +963,7 @@
         return `
           <article class="hf-card"
             style="--hf-accent:${acc.grad}"
-            onclick="location.href=${JSON.stringify('./blog-post.html?id=' + encodeURIComponent(p._id) + '&slug=' + encodeURIComponent(p.slug || ''))}">
+            data-href="./blog-post.html?id=${encodeURIComponent(p._id)}&amp;slug=${encodeURIComponent(p.slug || '')}">
             <div class="hf-top">
               <span class="hf-cat" style="background:${acc.text};-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">
                 ${p.category || 'GENERAL'}
@@ -1038,7 +1038,7 @@
 
       return `
         <article class="blog-card span-${span} ${row2}" data-cat="${cat}"
-            onclick="location.href=${JSON.stringify('./blog-post.html?id=' + encodeURIComponent(post._id) + '&slug=' + encodeURIComponent(post.slug || ''))}">
+            data-href="./blog-post.html?id=${encodeURIComponent(post._id)}&amp;slug=${encodeURIComponent(post.slug || '')}">
           ${post.coverImage ? `<div class="blog-img" style="background-image:url('${post.coverImage}')"></div>` : ''}
           <div class="blog-tint"></div>
           <div class="blog-pattern"></div>
@@ -1098,6 +1098,14 @@
     }
 
     document.getElementById('btn-load').onclick = renderBatch;
+
+    /* ─── CARD NAVIGATION (delegated) ─────────────── */
+    document.addEventListener('click', e => {
+      const el = e.target.closest('[data-href]');
+      if (!el) return;
+      const href = el.getAttribute('data-href');
+      if (href) location.href = href;
+    });
 
     /* ─── API STATUS BADGE ────────────────────────── */
     function setBadge(state) {
