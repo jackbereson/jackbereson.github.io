@@ -463,11 +463,22 @@
       });
       if (!res.ok) throw new Error(`dev.to ${res.status}`);
       const a = await res.json();
+      // dev.to returns tag_list as an array on the LIST endpoint but a
+      // comma-separated STRING on the single-article endpoint. Normalize.
+      const tagArr = Array.isArray(a.tag_list)
+        ? a.tag_list
+        : typeof a.tag_list === 'string'
+          ? a.tag_list.split(/,\s*/).filter(Boolean)
+          : Array.isArray(a.tags)
+            ? a.tags
+            : typeof a.tags === 'string'
+              ? a.tags.split(/,\s*/).filter(Boolean)
+              : [];
       return {
         title:       a.title,
         excerpt:     a.description || '',
-        category:    (a.tag_list?.[0] || 'general').toUpperCase(),
-        tags:        a.tag_list || [],
+        category:    (tagArr[0] || 'general').toUpperCase(),
+        tags:        tagArr,
         author:      a.user?.name || 'dev.to',
         authorImg:   a.user?.profile_image_90 || a.user?.profile_image || '',
         authorUrl:   a.user?.username ? `https://dev.to/${a.user.username}` : '',
