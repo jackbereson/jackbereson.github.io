@@ -24,6 +24,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Pre-render blog posts from dev.to
+        # Don't fail the whole deploy if dev.to is slow / down; the blog
+        # still works via the client-side fetch fallback in blog-post.html.
+        continue-on-error: true
+        run: node scripts/build-posts.js
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

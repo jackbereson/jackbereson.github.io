@@ -644,6 +644,10 @@
 
     /* ─── MAIN ───────────────────────────────────── */
     async function init() {
+      // If this page was pre-rendered at build time, the article is
+      // already in the DOM with full SEO tags baked in. Skip the fetch.
+      if (document.documentElement.dataset.prerendered === 'true') return;
+
       if (!id) {
         renderState({
           title: 'Missing article id',

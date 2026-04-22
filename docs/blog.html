@@ -1011,7 +1011,9 @@
 
       wrap.innerHTML = top.map((p, i) => {
         const acc = HF_ACCENTS[i % HF_ACCENTS.length];
-        const href = `./blog-post.html?id=${encodeURIComponent(p._id)}&amp;slug=${encodeURIComponent(p.slug || '')}`;
+        const href = PREBUILT_SLUGS.has(p.slug)
+          ? `./posts/${encodeURIComponent(p.slug)}.html`
+          : `./blog-post.html?id=${encodeURIComponent(p._id)}&amp;slug=${encodeURIComponent(p.slug || '')}`;
         return `
           <a class="hf-card" href="${href}"
             style="--hf-accent:${acc.grad}">
@@ -1087,7 +1089,9 @@
       const cat     = catKey(post.category);
       const row2    = (span === 12 || span === 6) ? 'row-2' : '';
 
-      const href = `./blog-post.html?id=${encodeURIComponent(post._id)}&amp;slug=${encodeURIComponent(post.slug || '')}`;
+      const href = PREBUILT_SLUGS.has(post.slug)
+        ? `./posts/${encodeURIComponent(post.slug)}.html`
+        : `./blog-post.html?id=${encodeURIComponent(post._id)}&amp;slug=${encodeURIComponent(post.slug || '')}`;
       return `
         <a class="blog-card span-${span} ${row2}" data-cat="${cat}" href="${href}">
           ${post.coverImage ? `<div class="blog-img" style="background-image:url('${post.coverImage}')"></div>` : ''}
@@ -1160,8 +1164,22 @@
     }
 
     /* ─── INIT ────────────────────────────────────── */
+    /* Set of slugs that have a pre-rendered static HTML page under
+       ./posts/<slug>.html. Populated on init from ./posts/index.json. */
+    let PREBUILT_SLUGS = new Set();
+
+    async function loadPrebuiltManifest() {
+      try {
+        const res = await fetch('./posts/index.json', { signal: AbortSignal.timeout(4000) });
+        if (!res.ok) return;
+        const data = await res.json();
+        (data.posts || []).forEach(p => p.slug && PREBUILT_SLUGS.add(p.slug));
+      } catch (_) { /* no manifest yet — card links fall back to ./blog-post.html */ }
+    }
+
     async function init() {
       setBadge('connecting');
+      await loadPrebuiltManifest();
       try {
         let posts = [];
 
