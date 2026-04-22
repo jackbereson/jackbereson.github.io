@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post — Jack Bereson</title>
+  <meta name="description" content="Article detail — Jack Bereson's blog." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── TOKENS (identical to index.html / blog.html) ─────── */
+    :root {
+      --bg:                  #0a0a0a;
+      --bg-2:                #111113;
+      --ink:                 #ffffff;
+      --ink-2:               rgba(255,255,255,0.72);
+      --ink-3:               rgba(255,255,255,0.52);
+      --ink-4:               rgba(255,255,255,0.36);
+      --glass-bg:            rgba(255,255,255,0.06);
+      --glass-bg-strong:     rgba(255,255,255,0.12);
+      --glass-border:        rgba(255,255,255,0.14);
+      --glass-border-strong: rgba(255,255,255,0.22);
+      --accent-1: #6366f1;
+      --accent-2: #ec4899;
+      --accent-3: #f59e0b;
+      --accent-4: #10b981;
+    }
+
+    html { scroll-behavior: smooth; }
+    html, body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLL PROGRESS ───────────────────────── */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0;
+      height: 2px; width: 0%;
+      background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899, #f59e0b);
+      z-index: 200;
+      box-shadow: 0 0 10px rgba(168,85,247,0.6);
+      transition: width .1s linear;
+    }
+
+    /* ─── BACKGROUND STAGE ──────────────────────── */
+    .bg-stage {
+      position: fixed; inset: 0; z-index: -1;
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 10%, rgba(99,102,241,0.22) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(168,85,247,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 50% 90%, rgba(6,182,212,0.12) 0%, transparent 55%),
+        #05060f;
+      overflow: hidden;
+    }
+    .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.45; pointer-events: none; }
+    .orb-1 { width: 520px; height: 520px; top: -140px; left: -100px; background: #6366f1; animation: float1 18s ease-in-out infinite; }
+    .orb-2 { width: 400px; height: 400px; top: 40%; right: -120px; background: #a855f7; animation: float2 22s ease-in-out infinite; }
+    .orb-3 { width: 460px; height: 460px; bottom: -140px; left: 20%; background: #ec4899; opacity: .3; animation: float3 26s ease-in-out infinite; }
+    @keyframes float1 { 0%,100%{transform:translate(0,0)scale(1)}50%{transform:translate(60px,80px)scale(1.1)} }
+    @keyframes float2 { 0%,100%{transform:translate(0,0)scale(1)}50%{transform:translate(-80px,60px)scale(1.15)} }
+    @keyframes float3 { 0%,100%{transform:translate(0,0)scale(1)}50%{transform:translate(40px,-70px)scale(1.08)} }
+
+    .grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(99,102,241,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+    .grain {
+      position: absolute; inset: 0; pointer-events: none;
+      opacity: 0.05; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ─── NAV (matches index.html & blog.html) ─── */
+    header.nav {
+      position: fixed; top: 20px; left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 40px); max-width: 1280px;
+      z-index: 50;
+      background: rgba(20,20,22,0.45);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 10px 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+    .brand-mark {
+      width: 34px; height: 34px;
+      display: grid; place-items: center;
+      font-weight: 800; font-size: 13px;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      border-radius: 10px; color: #fff;
+      box-shadow: 0 4px 16px rgba(99,102,241,0.4);
+    }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .brand-name { font-weight: 700; font-size: 14px; }
+    .brand-sub { font-size: 11px; color: var(--ink-3); }
+    .menu { display: flex; gap: 6px; }
+    .menu a {
+      font-size: 13px; font-weight: 500;
+      text-decoration: none; color: var(--ink-2);
+      padding: 8px 14px; border-radius: 10px;
+      transition: all .2s ease;
+    }
+    .menu a:hover { color: var(--ink); background: var(--glass-bg); }
+    .menu a.active { color: var(--ink); background: var(--glass-bg-strong); }
+    .nav-actions { display: flex; gap: 8px; align-items: center; }
+    .btn-ghost, .btn-solid {
+      font-size: 13px; font-weight: 600;
+      padding: 8px 14px; border-radius: 10px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+      transition: all .2s ease;
+    }
+    .btn-ghost { color: var(--ink-2); border: 1px solid var(--glass-border); }
+    .btn-ghost:hover { color: var(--ink); background: var(--glass-bg); border-color: var(--glass-border-strong); }
+    .btn-solid { color: #fff; background: linear-gradient(135deg, #6366f1, #ec4899); box-shadow: 0 4px 16px rgba(99,102,241,0.35); }
+    .btn-solid:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(99,102,241,0.5); }
+    .btn-solid svg { width: 14px; height: 14px; }
+    @media (max-width: 900px) { .menu { display: none; } .brand-sub { display: none; } }
+
+    /* ─── PAGE LAYOUT ────────────────────────────── */
+    main.wrap {
+      max-width: 880px;
+      padding: 140px 24px 100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--ink-3); text-decoration: none;
+      font-size: 13px; font-weight: 500;
+      padding: 8px 14px; border-radius: 999px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      transition: all .2s ease;
+      margin-bottom: 28px;
+    }
+    .back-link:hover { color: var(--ink); border-color: var(--glass-border-strong); transform: translateX(-2px); }
+    .back-link svg { width: 14px; height: 14px; }
+
+    /* ─── ARTICLE HEADER ─────────────────────────── */
+    .art-cat {
+      display: inline-block;
+      font-size: 11px; font-weight: 700; letter-spacing: .18em;
+      background: linear-gradient(135deg, #a78bfa, #f0abfc);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 14px;
+    }
+    .art-title {
+      font-size: clamp(28px, 4.2vw, 52px);
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.75) 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 18px;
+    }
+    .art-excerpt {
+      font-size: 17px; line-height: 1.6;
+      color: var(--ink-2);
+      margin-bottom: 28px;
+      max-width: 72ch;
+    }
+    .art-meta {
+      display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: center;
+      padding: 16px 0;
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+      margin-bottom: 32px;
+      font-size: 13px;
+      color: var(--ink-3);
+    }
+    .art-author { display: flex; align-items: center; gap: 10px; }
+    .art-author img { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--glass-border); }
+    .art-author-name { color: var(--ink); font-weight: 600; font-size: 13px; }
+    .art-meta .sep { color: var(--ink-4); }
+    .art-meta .dot::before { content: "·"; margin: 0 6px; color: var(--ink-4); }
+
+    /* Cover image */
+    .art-cover {
+      width: 100%; aspect-ratio: 16/9;
+      border-radius: 20px; overflow: hidden;
+      background: #121217 center/cover no-repeat;
+      border: 1px solid var(--glass-border);
+      margin-bottom: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    /* ─── ARTICLE BODY (dev.to body_html) ─────────── */
+    .art-body {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--ink-2);
+    }
+    .art-body > * + * { margin-top: 1.1em; }
+    .art-body h1, .art-body h2, .art-body h3, .art-body h4 {
+      color: var(--ink);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-top: 1.8em;
+      margin-bottom: .5em;
+      letter-spacing: -0.01em;
+    }
+    .art-body h1 { font-size: 1.8em; }
+    .art-body h2 { font-size: 1.5em; }
+    .art-body h3 { font-size: 1.25em; }
+    .art-body h4 { font-size: 1.1em; }
+    .art-body p { color: var(--ink-2); }
+    .art-body a {
+      color: #c4b5fd;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(196,181,253,0.3);
+      transition: all .2s ease;
+    }
+    .art-body a:hover { color: #fff; border-bottom-color: #a78bfa; }
+    .art-body ul, .art-body ol { padding-left: 1.4em; }
+    .art-body li { margin: .35em 0; }
+    .art-body strong { color: var(--ink); }
+    .art-body blockquote {
+      padding: 12px 18px;
+      border-left: 3px solid #a78bfa;
+      background: rgba(168,85,247,0.08);
+      border-radius: 0 10px 10px 0;
+      color: var(--ink-2);
+      font-style: italic;
+    }
+    .art-body blockquote p { margin: 0; }
+    .art-body img {
+      max-width: 100%; height: auto;
+      border-radius: 14px;
+      border: 1px solid var(--glass-border);
+      display: block;
+      margin: 1.5em auto;
+    }
+    .art-body code {
+      font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+      font-size: .88em;
+      padding: 2px 7px;
+      background: rgba(99,102,241,0.14);
+      color: #c4b5fd;
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 6px;
+    }
+    .art-body pre {
+      font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+      background: #0c0d12;
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      overflow-x: auto;
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+    .art-body pre code {
+      background: transparent; border: none; padding: 0;
+      color: #e5e7eb; font-size: inherit;
+    }
+    .art-body hr {
+      border: none; height: 1px;
+      background: var(--glass-border);
+      margin: 2.4em 0;
+    }
+    .art-body table {
+      width: 100%; border-collapse: collapse;
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 14px;
+    }
+    .art-body th, .art-body td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--glass-border);
+      text-align: left;
+    }
+    .art-body th { background: rgba(255,255,255,0.04); color: var(--ink); }
+    .art-body iframe { max-width: 100%; border-radius: 12px; border: 1px solid var(--glass-border); }
+
+    /* Tags + original-source footer */
+    .art-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 46px; padding-top: 26px;
+      border-top: 1px solid var(--glass-border);
+    }
+    .art-tag {
+      font-size: 12px; font-weight: 500;
+      color: var(--ink-2);
+      padding: 6px 12px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+    }
+
+    .art-footer {
+      margin-top: 36px;
+      padding: 24px;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+      gap: 16px;
+    }
+    .art-footer-left { display: flex; flex-direction: column; gap: 6px; }
+    .art-footer-title { font-size: 14px; font-weight: 700; color: var(--ink); }
+    .art-footer-sub { font-size: 12.5px; color: var(--ink-3); }
+    .art-source-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 16px;
+      font-size: 13px; font-weight: 600;
+      color: #fff; text-decoration: none;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(99,102,241,0.35);
+      transition: all .2s ease;
+    }
+    .art-source-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(99,102,241,0.5); }
+    .art-source-btn svg { width: 14px; height: 14px; }
+
+    /* ─── STATES: loading / error ────────────────── */
+    .state {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--ink-3);
+    }
+    .state h2 { color: var(--ink); font-size: 22px; margin-bottom: 10px; }
+    .state p { font-size: 14px; }
+    .spinner {
+      width: 36px; height: 36px; margin: 0 auto 16px;
+      border: 2px solid rgba(255,255,255,0.1);
+      border-top-color: #a78bfa;
+      border-radius: 50%;
+      animation: spin .9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    .site-foot {
+      position: relative; z-index: 1;
+      padding: 40px 24px;
+      border-top: 1px solid var(--glass-border);
+      color: var(--ink-3);
+      font-size: 13px;
+      background: rgba(5,6,15,0.6);
+    }
+    .site-foot .container {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+    }
+    .site-foot a { color: var(--ink-2); text-decoration: none; margin: 0 2px; }
+    .site-foot a:hover { color: var(--ink); }
+
+    @media (max-width: 640px) {
+      main.wrap { padding: 120px 18px 80px; }
+      .art-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <div class="bg-stage">
+    <div class="grid-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grain"></div>
+  </div>
+
+  <!-- NAV (injected by common.js) -->
+  <div id="site-header"></div>
+
+  <main class="wrap">
+    <a href="./blog.html" class="back-link">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 7H2M7 2 2 7l5 5"/>
+      </svg>
+      Back to Blog
+    </a>
+
+    <!-- Placeholder: replaced on load -->
+    <div id="article">
+      <div class="state">
+        <div class="spinner"></div>
+        <h2>Loading article…</h2>
+        <p>Fetching from dev.to</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER (injected by common.js) -->
+  <div id="site-footer"></div>
+
+  <script src="./common.js"></script>
+  <script>
+    /* ─── CONFIG (mirrors blog.html) ──────────────── */
+    const CONFIG = {
+      MODE: 'devto', // 'devto' | 'atlas' | 'express'
+      EXPRESS_BASE: 'http://localhost:3001/api',
+      ATLAS_APP_ID: 'YOUR_APP_ID',
+      ATLAS_API_KEY: 'YOUR_API_KEY',
+      ATLAS_CLUSTER: 'Cluster0',
+      ATLAS_DB: 'blog',
+      ATLAS_COL: 'blogs',
+    };
+
+    /* ─── SCROLL PROGRESS ────────────────────────── */
+    const progress = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      const h  = document.documentElement;
+      const st = h.scrollTop || document.body.scrollTop;
+      const sh = (h.scrollHeight || document.body.scrollHeight) - h.clientHeight;
+      progress.style.width = sh > 0 ? (st / sh * 100) + '%' : '0%';
+    });
+
+    /* ─── UTILS ──────────────────────────────────── */
+    const qs    = new URLSearchParams(location.search);
+    const id    = qs.get('id');
+    const slug  = qs.get('slug');
+
+    function fmtDate(d) {
+      if (!d) return '';
+      return new Date(d).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+    }
+
+    function setTitle(t) {
+      document.title = `${t} — Jack Bereson`;
+    }
+
+    function renderState(opts) {
+      const host = document.getElementById('article');
+      host.innerHTML = `
+        <div class="state">
+          ${opts.spinner ? '<div class="spinner"></div>' : ''}
+          <h2>${opts.title}</h2>
+          <p>${opts.body}</p>
+        </div>`;
+    }
+
+    /* ─── FETCHERS ───────────────────────────────── */
+    async function fetchFromDevto(id) {
+      const res = await fetch(`https://dev.to/api/articles/${encodeURIComponent(id)}`, {
+        signal: AbortSignal.timeout(8000),
+      });
+      if (!res.ok) throw new Error(`dev.to ${res.status}`);
+      const a = await res.json();
+      return {
+        title:       a.title,
+        excerpt:     a.description || '',
+        category:    (a.tag_list?.[0] || 'general').toUpperCase(),
+        tags:        a.tag_list || [],
+        author:      a.user?.name || 'dev.to',
+        authorImg:   a.user?.profile_image_90 || a.user?.profile_image || '',
+        authorUrl:   a.user?.username ? `https://dev.to/${a.user.username}` : '',
+        publishedAt: a.published_at,
+        readTime:    a.reading_time_minutes || 5,
+        reactions:   a.positive_reactions_count || 0,
+        comments:    a.comments_count || 0,
+        coverImage:  a.cover_image || a.social_image || `https://picsum.photos/seed/${a.id}/1200/675`,
+        bodyHtml:    a.body_html || '',
+        sourceUrl:   a.url,
+        sourceLabel: 'dev.to',
+      };
+    }
+
+    async function fetchFromExpress(id) {
+      const res = await fetch(`${CONFIG.EXPRESS_BASE}/blogs/${encodeURIComponent(id)}`, {
+        signal: AbortSignal.timeout(8000),
+      });
+      if (!res.ok) throw new Error(`Express ${res.status}`);
+      const a = await res.json();
+      return {
+        title:       a.title,
+        excerpt:     a.excerpt || '',
+        category:    a.category || 'GENERAL',
+        tags:        a.tags || [],
+        author:      a.author || 'Jack Bereson',
+        authorImg:   '',
+        authorUrl:   '',
+        publishedAt: a.publishedAt || a.createdAt,
+        readTime:    a.readTime || 5,
+        reactions:   0,
+        comments:    0,
+        coverImage:  a.coverImage || `https://picsum.photos/seed/${a._id || a.slug}/1200/675`,
+        bodyHtml:    mdToHtml(a.content || ''),
+        sourceUrl:   '',
+        sourceLabel: '',
+      };
+    }
+
+    /* Very light markdown → HTML for Atlas/Express content fallback.
+       dev.to already ships body_html so this only kicks in for your own posts. */
+    function mdToHtml(md) {
+      if (!md) return '';
+      const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      let out = esc(md);
+      out = out.replace(/```([\s\S]*?)```/g, (_, c) => `<pre><code>${c.trim()}</code></pre>`);
+      out = out.replace(/`([^`\n]+)`/g, (_, c) => `<code>${c}</code>`);
+      out = out.replace(/^######\s+(.*)$/gm, '<h6>$1</h6>')
+               .replace(/^#####\s+(.*)$/gm, '<h5>$1</h5>')
+               .replace(/^####\s+(.*)$/gm, '<h4>$1</h4>')
+               .replace(/^###\s+(.*)$/gm, '<h3>$1</h3>')
+               .replace(/^##\s+(.*)$/gm, '<h2>$1</h2>')
+               .replace(/^#\s+(.*)$/gm, '<h1>$1</h1>');
+      out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      out = out.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+      // Wrap plain paragraphs
+      out = out.split(/\n{2,}/).map(block => {
+        if (/^\s*<(h\d|pre|blockquote|ul|ol|li|img|hr)/.test(block)) return block;
+        return `<p>${block.replace(/\n/g,'<br>')}</p>`;
+      }).join('\n');
+      return out;
+    }
+
+    /* ─── MAIN ───────────────────────────────────── */
+    async function init() {
+      if (!id) {
+        renderState({
+          title: 'Missing article id',
+          body:  `No article id in the URL. <a href="./blog.html" style="color:#a78bfa">Return to blog</a>.`,
+        });
+        return;
+      }
+
+      try {
+        let post;
+        if (CONFIG.MODE === 'express') post = await fetchFromExpress(id);
+        else                           post = await fetchFromDevto(id);
+
+        setTitle(post.title);
+        render(post);
+      } catch (err) {
+        console.error('Article fetch failed:', err);
+        renderState({
+          title: 'Could not load this post',
+          body:  `${err.message}. <a href="./blog.html" style="color:#a78bfa">Back to all posts</a>.`,
+        });
+      }
+    }
+
+    function render(post) {
+      const tags = (post.tags || []).slice(0, 8).map(t => `<span class="art-tag">${t}</span>`).join('');
+      const meta = [
+        post.publishedAt ? `<span>${fmtDate(post.publishedAt)}</span>` : '',
+        `<span class="dot">${post.readTime || 5} min read</span>`,
+        post.reactions ? `<span class="dot">❤ ${post.reactions}</span>` : '',
+        post.comments  ? `<span class="dot">💬 ${post.comments}</span>`  : '',
+      ].filter(Boolean).join('');
+
+      const author = post.author ? `
+        <div class="art-author">
+          ${post.authorImg ? `<img src="${post.authorImg}" alt="${post.author}">` : ''}
+          <span class="art-author-name">${post.author}</span>
+        </div>` : '';
+
+      const sourceFooter = post.sourceUrl ? `
+        <div class="art-footer">
+          <div class="art-footer-left">
+            <div class="art-footer-title">Originally published on ${post.sourceLabel || 'the web'}</div>
+            <div class="art-footer-sub">This article is mirrored here from its original source.</div>
+          </div>
+          <a class="art-source-btn" href="${post.sourceUrl}" target="_blank" rel="noopener">
+            Read on ${post.sourceLabel || 'source'}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17 17 7M8 7h9v9"/>
+            </svg>
+          </a>
+        </div>` : '';
+
+      document.getElementById('article').innerHTML = `
+        <span class="art-cat">${post.category}</span>
+        <h1 class="art-title">${post.title}</h1>
+        ${post.excerpt ? `<p class="art-excerpt">${post.excerpt}</p>` : ''}
+        <div class="art-meta">
+          ${author}
+          ${author && meta ? '<span class="sep">·</span>' : ''}
+          ${meta}
+        </div>
+        ${post.coverImage ? `<div class="art-cover" style="background-image:url('${post.coverImage}')"></div>` : ''}
+        <article class="art-body">${post.bodyHtml}</article>
+        ${tags ? `<div class="art-tags">${tags}</div>` : ''}
+        ${sourceFooter}
+      `;
+
+      // Open all in-body links in a new tab so users don't lose the reading position
+      document.querySelectorAll('.art-body a[href^="http"]').forEach(a => {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>
