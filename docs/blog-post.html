@@ -3,9 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Post — Jack Bereson</title>
-  <meta name="description" content="Article detail — Jack Bereson's blog." />
+  <title>Loading article… — Jack Bereson</title>
+  <meta name="description" content="An article from Jack Bereson's curated engineering blog." />
+  <meta name="author" content="Jack Bereson" />
   <meta name="theme-color" content="#0a0a0a" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" id="meta-canonical" href="https://jackbereson.github.io/blog.html" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
+  <link rel="manifest" href="./site.webmanifest" />
+
+  <!-- Open Graph (filled by JS once the article loads) -->
+  <meta property="og:type"        id="og-type"        content="article" />
+  <meta property="og:site_name"   content="Jack Bereson" />
+  <meta property="og:url"         id="og-url"         content="https://jackbereson.github.io/blog.html" />
+  <meta property="og:title"       id="og-title"       content="Loading article… — Jack Bereson" />
+  <meta property="og:description" id="og-description" content="An article from Jack Bereson's curated engineering blog." />
+  <meta property="og:image"       id="og-image"       content="https://jackbereson.github.io/images/jackbereson.png" />
+  <meta property="og:locale"      content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       id="tw-title"       content="Loading article… — Jack Bereson" />
+  <meta name="twitter:description" id="tw-description" content="An article from Jack Bereson's curated engineering blog." />
+  <meta name="twitter:image"       id="tw-image"       content="https://jackbereson.github.io/images/jackbereson.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -446,6 +471,81 @@
       document.title = `${t} — Jack Bereson`;
     }
 
+    /* ─── Update SEO meta tags at runtime ─────────── */
+    function updateMeta(post) {
+      const pageUrl = location.href.split('#')[0];
+      const fullTitle = `${post.title} — Jack Bereson`;
+      const desc = (post.excerpt || '').slice(0, 300) || 'An article from Jack Bereson\'s engineering blog.';
+      const image = post.coverImage || 'https://jackbereson.github.io/images/jackbereson.png';
+
+      // Standard
+      const descEl = document.querySelector('meta[name="description"]');
+      if (descEl) descEl.setAttribute('content', desc);
+
+      const canon = document.getElementById('meta-canonical');
+      if (canon) canon.setAttribute('href', pageUrl);
+
+      // Open Graph
+      const set = (id, val) => { const el = document.getElementById(id); if (el && val) el.setAttribute('content', val); };
+      set('og-url', pageUrl);
+      set('og-title', fullTitle);
+      set('og-description', desc);
+      set('og-image', image);
+      set('tw-title', fullTitle);
+      set('tw-description', desc);
+      set('tw-image', image);
+
+      // article:* metadata (Facebook "article" type enrichment)
+      const addArticleMeta = (prop, content) => {
+        if (!content) return;
+        let el = document.querySelector(`meta[property="${prop}"]`);
+        if (!el) {
+          el = document.createElement('meta');
+          el.setAttribute('property', prop);
+          document.head.appendChild(el);
+        }
+        el.setAttribute('content', content);
+      };
+      addArticleMeta('article:published_time', post.publishedAt || '');
+      addArticleMeta('article:author', post.author || '');
+      addArticleMeta('article:section', post.category || '');
+      (post.tags || []).slice(0, 6).forEach(t => {
+        const el = document.createElement('meta');
+        el.setAttribute('property', 'article:tag');
+        el.setAttribute('content', t);
+        document.head.appendChild(el);
+      });
+
+      // JSON-LD Article (inject fresh)
+      const ld = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "description": desc,
+        "image": [image],
+        "datePublished": post.publishedAt || undefined,
+        "author": {
+          "@type": "Person",
+          "name": post.author || 'Jack Bereson',
+          "url": post.authorUrl || undefined
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Jack Bereson",
+          "url": "https://jackbereson.github.io/"
+        },
+        "mainEntityOfPage": pageUrl,
+        "keywords": (post.tags || []).join(', ') || undefined
+      };
+      const existing = document.getElementById('ld-article');
+      if (existing) existing.remove();
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.id = 'ld-article';
+      script.textContent = JSON.stringify(ld, null, 2);
+      document.head.appendChild(script);
+    }
+
     function renderState(opts) {
       const host = document.getElementById('article');
       host.innerHTML = `
@@ -558,6 +658,7 @@
         else                           post = await fetchFromDevto(id);
 
         setTitle(post.title);
+        updateMeta(post);
         render(post);
       } catch (err) {
         console.error('Article fetch failed:', err);
