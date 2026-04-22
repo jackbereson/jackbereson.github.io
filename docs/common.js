@@ -15,6 +15,7 @@
       <a href="./index.html#work">Work</a>
       <a href="./index.html#lab">Lab</a>
       <a href="./index.html#stack">Stack</a>
+      <a href="./blog.html">Blog</a>
       <a href="./index.html#contact">Contact</a>
     </nav>
     <div class="nav-actions">
@@ -55,15 +56,17 @@
   const y = new Date().getFullYear();
   document.querySelectorAll('[data-year]').forEach(el => { el.textContent = y; });
 
-  // Highlight active nav item based on hash or current page
+  // Highlight active nav item based on current page / hash
   const menu = document.querySelector('.menu');
   if (menu) {
     const path = location.pathname.split('/').pop() || 'index.html';
     const hash = location.hash;
     menu.querySelectorAll('a').forEach(a => {
       const href = a.getAttribute('href') || '';
-      if (path === 'index.html' && hash && href.endsWith(hash)) a.classList.add('active');
-      else if (!hash && href === './index.html#work' && path === 'index.html') a.classList.add('active');
+      if (path === 'blog.html'   && href === './blog.html')   { a.classList.add('active'); return; }
+      if (path === 'resume.html' && href === './resume.html') { a.classList.add('active'); return; }
+      if (path === 'index.html'  && hash && href === `./index.html${hash}`) { a.classList.add('active'); return; }
+      if (path === 'index.html'  && !hash && href === './index.html#work')  { a.classList.add('active'); return; }
     });
   }
 })();
