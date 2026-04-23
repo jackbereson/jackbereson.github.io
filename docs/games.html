@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kids Games — Jack Bereson</title>
+  <meta name="description" content="A curated collection of free kids games from trusted sources: PBS Kids, Coolmath Games, Scratch, ABCya, National Geographic Kids and more." />
+  <meta name="author" content="Jack Bereson" />
+  <meta name="keywords" content="kids games, children games, PBS Kids, Coolmath Games, Scratch, ABCya, educational games, free games" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://jackbereson.github.io/games.html" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
+  <link rel="manifest" href="./site.webmanifest" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jack Bereson" />
+  <meta property="og:url" content="https://jackbereson.github.io/games.html" />
+  <meta property="og:title" content="Kids Games — Jack Bereson" />
+  <meta property="og:description" content="A curated collection of free, safe kids games from the world's most trusted sources." />
+  <meta property="og:image" content="https://jackbereson.github.io/images/jackbereson.png" />
+  <meta property="og:image:width" content="1376" />
+  <meta property="og:image:height" content="898" />
+  <meta property="og:locale" content="vi_VN" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kids Games — Jack Bereson" />
+  <meta name="twitter:description" content="A curated collection of free, safe kids games from trusted sources." />
+  <meta name="twitter:image" content="https://jackbereson.github.io/images/jackbereson.png" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Kids Games — Jack Bereson",
+    "url": "https://jackbereson.github.io/games.html",
+    "description": "A curated collection of free kids games from trusted sources.",
+    "author": {
+      "@type": "Person",
+      "name": "Jack Bereson",
+      "url": "https://jackbereson.github.io/"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:                  #0a0a0a;
+      --bg-2:                #111113;
+      --ink:                 #ffffff;
+      --ink-2:               rgba(255,255,255,0.72);
+      --ink-3:               rgba(255,255,255,0.52);
+      --ink-4:               rgba(255,255,255,0.36);
+      --glass-bg:            rgba(255,255,255,0.06);
+      --glass-bg-strong:     rgba(255,255,255,0.12);
+      --glass-border:        rgba(255,255,255,0.14);
+      --glass-border-strong: rgba(255,255,255,0.22);
+      --accent-1: #6366f1;
+      --accent-2: #ec4899;
+      --accent-3: #f59e0b;
+      --accent-4: #10b981;
+    }
+
+    html { scroll-behavior: smooth; }
+    html, body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLL PROGRESS ───────────────────────── */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0;
+      height: 2px; width: 0%;
+      background: linear-gradient(90deg, #f59e0b, #ec4899, #6366f1, #10b981);
+      z-index: 200;
+      box-shadow: 0 0 10px rgba(245,158,11,0.6);
+    }
+
+    /* ─── STAGE ─────────────────────────────────── */
+    .stage {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 20%, rgba(245,158,11,0.20) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 80% 30%, rgba(236,72,153,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 50% at 50% 90%, rgba(16,185,129,0.15) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 10% 80%, rgba(99,102,241,0.14) 0%, transparent 55%),
+        #05060f;
+    }
+
+    .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.45; pointer-events: none; z-index: 0; }
+    .orb-1 { width: 520px; height: 520px; top: -120px; left: -100px; background: #f59e0b; animation: float1 18s ease-in-out infinite; }
+    .orb-2 { width: 400px; height: 400px; top: 20%; right: -120px; background: #ec4899; animation: float2 22s ease-in-out infinite; }
+    .orb-3 { width: 460px; height: 460px; bottom: -140px; left: 30%; background: #10b981; animation: float3 26s ease-in-out infinite; }
+    @keyframes float1 { 0%,100%{transform:translate(0,0)scale(1)}50%{transform:translate(60px,80px)scale(1.1)} }
+    @keyframes float2 { 0%,100%{transform:translate(0,0)scale(1)}50%{transform:translate(-80px,60px)scale(1.15)} }
+    @keyframes float3 { 0%,100%{transform:translate(0,0)scale(1)}50%{transform:translate(40px,-70px)scale(1.08)} }
+
+    .grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(245,158,11,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,158,11,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+      z-index: 1;
+    }
+
+    .stage::after {
+      content: ''; position: absolute; inset: 0; z-index: 3;
+      background:
+        linear-gradient(180deg, rgba(5,6,15,0.35) 0%, rgba(5,6,15,0) 18%, rgba(5,6,15,0) 100%),
+        linear-gradient(90deg, rgba(5,6,15,0.6) 0%, rgba(5,6,15,0.15) 40%, rgba(5,6,15,0) 55%);
+      pointer-events: none;
+    }
+
+    .scanline {
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(245,158,11,0.8), rgba(236,72,153,0.8), transparent);
+      z-index: 4; animation: scan 6s linear infinite; opacity: 0.7;
+    }
+    @keyframes scan { 0%{top:0} 50%{top:100%} 50.01%{top:0} 100%{top:100%} }
+
+    .grain {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      opacity: 0.05; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ─── NAV ──────────────────────────────────── */
+    header.nav {
+      position: fixed; top: 20px; left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 40px); max-width: 1280px;
+      z-index: 50;
+      background: rgba(20,20,22,0.45);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 22px; gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+    .brand-mark {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+      border: 1px solid var(--glass-border-strong);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 14px; letter-spacing: -0.02em;
+    }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .brand-name { font-size: 15px; font-weight: 700; }
+    .brand-sub  { font-size: 11px; color: var(--ink-3); font-weight: 500; }
+    nav.menu {
+      display: flex; align-items: center; gap: 4px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px; padding: 4px;
+    }
+    nav.menu a {
+      padding: 8px 16px; font-size: 13px; font-weight: 500;
+      color: var(--ink-2); text-decoration: none; border-radius: 999px;
+      transition: all 0.2s;
+    }
+    nav.menu a:hover { color: var(--ink); background: rgba(255,255,255,0.08); }
+    nav.menu a.active { color: var(--ink); background: rgba(255,255,255,0.14); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .btn-ghost {
+      padding: 10px 18px; font-size: 13px; font-weight: 600;
+      color: var(--ink); text-decoration: none; border-radius: 12px;
+      border: 1px solid var(--glass-border-strong); background: var(--glass-bg);
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover { background: var(--glass-bg-strong); border-color: rgba(255,255,255,0.35); }
+    .btn-solid {
+      padding: 10px 20px; font-size: 13px; font-weight: 600;
+      color: #0a0a0a; background: #fff; text-decoration: none; border-radius: 12px;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-solid svg { width: 14px; height: 14px; }
+    .btn-solid:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(255,255,255,0.25); }
+    @media (max-width: 860px) { nav.menu { display: none; } .brand-sub { display: none; } .btn-ghost { display: none; } }
+
+    /* ─── STAGE INNER ────────────────────────────── */
+    .stage-inner {
+      position: relative; z-index: 10;
+      display: flex; align-items: center; gap: 4rem;
+      flex: 1;
+      width: 100%; max-width: 1340px; margin: 0 auto;
+      padding: 130px 60px 90px;
+    }
+
+    /* ─── HERO ───────────────────────────────────── */
+    .hero { flex: 0 0 auto; width: 50%; max-width: 580px; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 999px;
+      background: rgba(245,158,11,0.12);
+      border: 1px solid rgba(245,158,11,0.3);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+      color: #fbbf24; margin-bottom: 24px;
+    }
+    .hero-eyebrow .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: #f59e0b;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)} }
+
+    .hero-title {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 900; letter-spacing: -0.04em; line-height: 0.95;
+      margin-bottom: 24px;
+    }
+    .hero-title .line-1 {
+      display: block;
+      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.85) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-title .line-2 {
+      display: block;
+      background: linear-gradient(135deg, #f59e0b 0%, #ec4899 50%, #6366f1 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 17px; color: var(--ink-2); line-height: 1.7;
+      max-width: 440px; margin-bottom: 36px;
+    }
+
+    .hero-stats {
+      display: flex; gap: 28px; flex-wrap: wrap;
+    }
+    .stat-item { display: flex; flex-direction: column; gap: 2px; }
+    .stat-num {
+      font-size: 28px; font-weight: 800; letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #f59e0b, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .stat-label { font-size: 12px; color: var(--ink-3); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* ─── FLOATING CARDS (hero right) ───────────── */
+    .hero-visual {
+      flex: 1; min-width: 0;
+      position: relative; height: 440px;
+    }
+    .float-card {
+      position: absolute;
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 20px 24px;
+      display: flex; flex-direction: column; gap: 10px;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+    .float-card-a {
+      top: 10%; left: 5%; width: 200px;
+      animation: fc1 6s ease-in-out infinite;
+    }
+    .float-card-b {
+      top: 5%; right: 5%; width: 220px;
+      animation: fc2 7.5s ease-in-out infinite;
+    }
+    .float-card-c {
+      bottom: 10%; left: 18%; width: 200px;
+      animation: fc3 6.8s ease-in-out infinite;
+    }
+    .float-card-d {
+      bottom: 5%; right: 8%; width: 190px;
+      animation: fc1 8s ease-in-out infinite reverse;
+    }
+    @keyframes fc1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    @keyframes fc2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-18px)} }
+    @keyframes fc3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+    .fc-emoji { font-size: 32px; line-height: 1; }
+    .fc-title { font-size: 13px; font-weight: 700; color: var(--ink); }
+    .fc-source { font-size: 11px; color: var(--ink-3); }
+    .fc-age {
+      display: inline-flex; align-items: center;
+      padding: 3px 8px; border-radius: 6px;
+      background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3);
+      font-size: 10px; font-weight: 700; color: #fbbf24; width: fit-content;
+    }
+
+    /* ─── MAIN CONTENT ───────────────────────────── */
+    main {
+      position: relative; z-index: 5;
+      background:
+        linear-gradient(180deg,
+          #05060f 0%, #05060f 300px, #08080f 700px,
+          var(--bg) 1200px, var(--bg-2) 100%);
+    }
+    main::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 520px;
+      background:
+        radial-gradient(ellipse 60% 100% at 50% 0%, rgba(16,185,129,0.12), transparent 70%),
+        radial-gradient(ellipse 50% 100% at 85% 0%, rgba(245,158,11,0.12), transparent 70%),
+        radial-gradient(ellipse 70% 100% at 25% 10%, rgba(236,72,153,0.14), transparent 70%),
+        radial-gradient(ellipse 50% 100% at 75% 10%, rgba(99,102,241,0.12), transparent 70%);
+      mask-image: linear-gradient(180deg, black 0%, black 20%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, black 0%, black 20%, transparent 100%);
+      pointer-events: none; z-index: 0;
+    }
+    main > .grid-layer {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(245,158,11,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,158,11,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(180deg, black 0%, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, black 0%, black 85%, transparent 100%);
+    }
+
+    section.block { padding: 100px 0; position: relative; z-index: 1; overflow: hidden; }
+    section.block > .container { position: relative; z-index: 3; }
+
+    section.block::before, section.block::after {
+      content: ''; position: absolute; border-radius: 50%;
+      filter: blur(110px); opacity: 0.3; pointer-events: none; z-index: 0; will-change: transform;
+    }
+    section.block::before { animation: orbA 22s ease-in-out infinite; }
+    section.block::after  { animation: orbB 26s ease-in-out infinite; }
+    @keyframes orbA { 0%,100%{transform:translate(0,0)scale(1)}50%{transform:translate(50px,-40px)scale(1.12)} }
+    @keyframes orbB { 0%,100%{transform:translate(0,0)scale(1)}50%{transform:translate(-40px,50px)scale(0.92)} }
+
+    #games::before { width: 520px; height: 520px; background: #f59e0b; top: 20%; right: -220px; }
+    #games::after  { width: 420px; height: 420px; background: #10b981; bottom: 5%; left: -180px; opacity: 0.22; }
+
+    .section-num {
+      position: absolute; top: 40px; right: 40px; z-index: 2;
+      font-family: 'SF Mono', 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 600; letter-spacing: 1px;
+      color: rgba(255,255,255,0.3);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-num::before {
+      content: ''; width: 28px; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245,158,11,0.5));
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .section-head { margin-bottom: 48px; display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .section-kicker {
+      font-size: 12px; font-weight: 700; letter-spacing: 1.4px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #fbbf24, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 12px;
+    }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+    .section-sub { color: var(--ink-3); font-size: 15px; max-width: 480px; line-height: 1.6; margin-top: 10px; }
+
+    /* ─── FILTER TABS ──────────────────────────── */
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+    .filter-tab {
+      padding: 9px 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      color: var(--ink-2); font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+      font-family: inherit; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .filter-tab:hover { color: var(--ink); background: rgba(255,255,255,0.08); }
+    .filter-tab.active { background: #fff; color: #0a0a0a; border-color: #fff; }
+    .filter-tab .count { opacity: 0.55; font-size: 11px; }
+
+    /* ─── GAMES BENTO GRID ─────────────────────── */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      grid-auto-rows: 280px;
+      grid-auto-flow: dense;
+    }
+
+    /* ─── GAME CARD ────────────────────────────── */
+    .game-card {
+      position: relative; overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      background: #080812;
+      isolation: isolate;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.2,0.7,0.2,1), border-color 0.3s, box-shadow 0.3s;
+      grid-column: span 4;
+    }
+    .game-card:hover { transform: translateY(-6px); border-color: transparent; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .game-card.span-6 { grid-column: span 6; }
+    .game-card.span-4 { grid-column: span 4; }
+    .game-card.span-3 { grid-column: span 3; }
+    .game-card.row-2  { grid-row: span 2; }
+
+    /* Category gradient backgrounds */
+    [data-cat="puzzle"]    { --tint: linear-gradient(135deg, rgba(99,102,241,0.6), rgba(168,85,247,0.35)); --dot: #a78bfa; --glow: rgba(99,102,241,0.4); }
+    [data-cat="learning"]  { --tint: linear-gradient(135deg, rgba(16,185,129,0.6), rgba(6,182,212,0.35));  --dot: #6ee7b7; --glow: rgba(16,185,129,0.4); }
+    [data-cat="adventure"] { --tint: linear-gradient(135deg, rgba(245,158,11,0.6), rgba(239,68,68,0.35));  --dot: #fcd34d; --glow: rgba(245,158,11,0.4); }
+    [data-cat="creative"]  { --tint: linear-gradient(135deg, rgba(236,72,153,0.6), rgba(168,85,247,0.35)); --dot: #f9a8d4; --glow: rgba(236,72,153,0.4); }
+    [data-cat="racing"]    { --tint: linear-gradient(135deg, rgba(6,182,212,0.6), rgba(59,130,246,0.35));  --dot: #67e8f9; --glow: rgba(6,182,212,0.4); }
+
+    .card-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: var(--tint);
+    }
+    .card-emoji-bg {
+      position: absolute; inset: 0; z-index: 1;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 120px; line-height: 1; opacity: 0.12;
+      filter: blur(2px);
+      transform: scale(1.1);
+      transition: transform 0.7s cubic-bezier(0.2,0.7,0.2,1), opacity 0.4s;
+      user-select: none;
+    }
+    .game-card:hover .card-emoji-bg { transform: scale(1.25); opacity: 0.18; }
+
+    .card-glow {
+      position: absolute; inset: 0; z-index: 2;
+      background: radial-gradient(ellipse 80% 80% at 50% 40%, var(--glow, rgba(99,102,241,0.3)), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .game-card:hover .card-glow { opacity: 1; }
+
+    .card-overlay {
+      position: absolute; inset: 0; z-index: 3;
+      background: linear-gradient(180deg, rgba(8,8,18,0.1) 0%, rgba(8,8,18,0.55) 45%, rgba(8,8,18,0.97) 100%);
+    }
+
+    .card-pattern {
+      position: absolute; inset: 0; z-index: 4;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 22px 22px;
+      mask-image: linear-gradient(180deg, black 0%, transparent 60%);
+      -webkit-mask-image: linear-gradient(180deg, black 0%, transparent 60%);
+      opacity: 0.5; pointer-events: none;
+    }
+
+    .card-cat-chip {
+      position: absolute; top: 16px; left: 16px; z-index: 6;
+      padding: 5px 10px;
+      background: rgba(0,0,0,0.45); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.18); border-radius: 7px;
+      font-size: 10.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.6px; color: #fff;
+      display: inline-flex; align-items: center; gap: 7px;
+    }
+    .cat-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--dot, #fff);
+      box-shadow: 0 0 8px var(--dot, #fff);
+    }
+
+    .card-age-chip {
+      position: absolute; top: 16px; right: 16px; z-index: 6;
+      padding: 5px 10px;
+      background: rgba(0,0,0,0.45); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 7px;
+      font-size: 10.5px; font-weight: 700; color: var(--ink-2);
+    }
+
+    .card-body {
+      position: relative; z-index: 5;
+      padding: 20px 22px 22px;
+    }
+    .card-emoji-sm { font-size: 28px; margin-bottom: 10px; line-height: 1; }
+    .card-title { font-size: 17px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; line-height: 1.2; }
+    .game-card.span-6 .card-title { font-size: 22px; }
+
+    .card-desc { font-size: 13px; color: var(--ink-3); line-height: 1.5; margin-bottom: 14px; }
+    .game-card.row-2 .card-desc { -webkit-line-clamp: 4; line-clamp: 4; }
+    .card-desc { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+
+    .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px;
+    }
+    .card-source {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 12px; color: var(--ink-3); font-weight: 600;
+    }
+    .card-source-dot {
+      width: 22px; height: 22px; border-radius: 6px;
+      background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+    }
+    .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .card-tag {
+      padding: 3px 8px; border-radius: 5px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 10px; font-weight: 600; color: var(--ink-3);
+    }
+
+    .card-play-btn {
+      position: absolute; bottom: 22px; right: 22px; z-index: 6;
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.22);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.25s;
+      opacity: 0; transform: scale(0.85);
+    }
+    .game-card:hover .card-play-btn { opacity: 1; transform: scale(1); }
+    .card-play-btn svg { width: 18px; height: 18px; fill: #fff; margin-left: 2px; }
+
+    /* ─── FEATURED SOURCES ─────────────────────── */
+    .sources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 60px;
+    }
+    .source-chip {
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 20px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      text-decoration: none; color: inherit;
+      transition: all 0.25s;
+    }
+    .source-chip:hover {
+      background: var(--glass-bg-strong);
+      border-color: var(--glass-border-strong);
+      transform: translateY(-3px);
+    }
+    .source-icon {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .source-info { min-width: 0; }
+    .source-name { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+    .source-meta { font-size: 11px; color: var(--ink-3); font-weight: 500; }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer.site-foot {
+      background: var(--bg-2);
+      border-top: 1px solid var(--glass-border);
+      padding: 28px 0;
+    }
+    footer.site-foot .container {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+      font-size: 13px; color: var(--ink-3);
+    }
+    footer.site-foot a { color: var(--ink-3); text-decoration: none; transition: color 0.2s; }
+    footer.site-foot a:hover { color: var(--ink); }
+
+    /* ─── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 900px) {
+      .stage-inner { flex-direction: column; padding: 110px 24px 60px; gap: 2rem; }
+      .hero { width: 100%; max-width: 100%; }
+      .hero-visual { display: none; }
+      .games-grid { grid-auto-rows: 240px; }
+      .game-card.span-6 { grid-column: span 12; }
+      .game-card { grid-column: span 6; }
+      .game-card.row-2 { grid-row: span 1; }
+    }
+    @media (max-width: 600px) {
+      .game-card { grid-column: span 12; }
+      .games-grid { grid-auto-rows: 220px; }
+      .container { padding: 0 20px; }
+      .section-head { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Stage / Hero -->
+<div class="stage">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="grid-bg"></div>
+  <div class="scanline"></div>
+  <div class="grain"></div>
+
+  <div id="site-header"></div>
+
+  <div class="stage-inner">
+    <!-- Left: Hero text -->
+    <div class="hero">
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        🎮 Kids Game Hub
+      </div>
+      <h1 class="hero-title">
+        <span class="line-1">World of</span>
+        <span class="line-2">Fun Games</span>
+      </h1>
+      <p class="hero-desc">
+        Hundreds of kids games hand-picked from the world's most trusted sources —
+        free, safe, and suitable for all ages from 2 to 16.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">12+</span>
+          <span class="stat-label">Sources</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">500+</span>
+          <span class="stat-label">Games</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">2–16</span>
+          <span class="stat-label">Ages</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Floating game cards -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="float-card float-card-a">
+        <div class="fc-emoji">🧩</div>
+        <div class="fc-title">Coolmath Games</div>
+        <div class="fc-source">coolmathgames.com</div>
+        <div class="fc-age">Ages 6–16</div>
+      </div>
+      <div class="float-card float-card-b">
+        <div class="fc-emoji">🐱</div>
+        <div class="fc-title">PBS Kids</div>
+        <div class="fc-source">pbskids.org</div>
+        <div class="fc-age">Ages 2–8</div>
+      </div>
+      <div class="float-card float-card-c">
+        <div class="fc-emoji">🎨</div>
+        <div class="fc-title">Scratch MIT</div>
+        <div class="fc-source">scratch.mit.edu</div>
+        <div class="fc-age">Ages 6–16</div>
+      </div>
+      <div class="float-card float-card-d">
+        <div class="fc-emoji">🌍</div>
+        <div class="fc-title">Nat Geo Kids</div>
+        <div class="fc-source">kids.natgeo.com</div>
+        <div class="fc-age">Ages 6–14</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /stage -->
+
+<!-- Main content -->
+<main>
+  <div class="grid-layer"></div>
+
+  <section class="block" id="games">
+    <span class="section-num">01 — GAMES</span>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">🎮 Kids Games</div>
+          <h2 class="section-title">All Games</h2>
+          <p class="section-sub">Pick a category and explore hundreds of free games.</p>
+        </div>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-tab active" data-filter="all">All <span class="count">12</span></button>
+        <button class="filter-tab" data-filter="learning">🎓 Learning <span class="count">5</span></button>
+        <button class="filter-tab" data-filter="puzzle">🧩 Puzzle <span class="count">2</span></button>
+        <button class="filter-tab" data-filter="adventure">🗺️ Adventure <span class="count">3</span></button>
+        <button class="filter-tab" data-filter="creative">🎨 Creative <span class="count">1</span></button>
+        <button class="filter-tab" data-filter="racing">🏎️ Racing <span class="count">1</span></button>
+      </div>
+
+      <!-- Games bento grid -->
+      <div class="games-grid" id="gamesGrid"></div>
+
+      <!-- Sources section -->
+      <div style="margin-top: 80px;">
+        <div class="section-kicker" style="margin-bottom:12px;">🌐 Game Sources</div>
+        <h3 class="section-title" style="font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:8px;">Browse by Source</h3>
+        <p class="section-sub">Jump directly to the most trusted kids game sites on the web.</p>
+        <div class="sources-grid" id="sourcesGrid"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="./common.js"></script>
+
+<script>
+  /* ─── Scroll progress ─────────────────────────── */
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('scrollProgress');
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    el.style.width = Math.min(pct, 100) + '%';
+  }, { passive: true });
+
+  /* ─── Games data ──────────────────────────────── */
+  const GAMES = [
+    {
+      id: 1,
+      title: 'PBS Kids Games',
+      desc: 'Hundreds of games from beloved PBS shows: Curious George, Wild Kratts, Daniel Tiger and many more.',
+      url: 'https://pbskids.org/games',
+      source: 'PBS Kids',
+      sourceEmoji: '📺',
+      emoji: '🐱',
+      cat: 'learning',
+      age: 'Ages 2–8',
+      tags: ['educational', 'TV shows'],
+      span: 'span-6',
+      row: 'row-2'
+    },
+    {
+      id: 2,
+      title: 'Coolmath Games',
+      desc: 'Hundreds of logic and math games disguised as fun: Bloxorz, Run 3, Snake and more classics.',
+      url: 'https://www.coolmathgames.com/',
+      source: 'Coolmath Games',
+      sourceEmoji: '🧮',
+      emoji: '🧩',
+      cat: 'puzzle',
+      age: 'Ages 6–16',
+      tags: ['math', 'logic'],
+      span: 'span-6',
+      row: ''
+    },
+    {
+      id: 3,
+      title: 'Scratch — Game Studio',
+      desc: 'Millions of games coded by kids worldwide. Explore, play, and build your own game from scratch!',
+      url: 'https://scratch.mit.edu/explore/projects/games/',
+      source: 'Scratch (MIT)',
+      sourceEmoji: '🐈',
+      emoji: '🎨',
+      cat: 'creative',
+      age: 'Ages 6–16',
+      tags: ['creative', 'coding'],
+      span: 'span-4',
+      row: ''
+    },
+    {
+      id: 4,
+      title: 'ABCya! Games',
+      desc: 'Grade-based educational games from Pre-K through Grade 6 — reading, math, science and more.',
+      url: 'https://www.abcya.com/',
+      source: 'ABCya!',
+      sourceEmoji: '📚',
+      emoji: '📖',
+      cat: 'learning',
+      age: 'Ages 3–12',
+      tags: ['school', 'reading'],
+      span: 'span-4',
+      row: ''
+    },
+    {
+      id: 5,
+      title: 'National Geographic Kids',
+      desc: 'Explore nature and science through exciting games, photos, and videos from Nat Geo.',
+      url: 'https://kids.nationalgeographic.com/games',
+      source: 'Nat Geo Kids',
+      sourceEmoji: '🌍',
+      emoji: '🦁',
+      cat: 'adventure',
+      age: 'Ages 6–14',
+      tags: ['science', 'nature'],
+      span: 'span-4',
+      row: ''
+    },
+    {
+      id: 6,
+      title: 'Funbrain Games',
+      desc: 'Games, books, and educational videos for Pre-K through Grade 8. Math Baseball, Plural Girls and more.',
+      url: 'https://www.funbrain.com/',
+      source: 'Funbrain',
+      sourceEmoji: '🎮',
+      emoji: '🧠',
+      cat: 'learning',
+      age: 'Ages 3–14',
+      tags: ['learning', 'reading'],
+      span: 'span-4',
+      row: ''
+    },
+    {
+      id: 7,
+      title: 'Google Doodle Games',
+      desc: 'Classic mini-games from Google Doodle: Pac-Man, Snake, Cricket World Cup and dozens of history games.',
+      url: 'https://www.google.com/doodles',
+      source: 'Google Doodles',
+      sourceEmoji: '🔵',
+      emoji: '🕹️',
+      cat: 'adventure',
+      age: 'All ages',
+      tags: ['mini-games', 'classics'],
+      span: 'span-4',
+      row: ''
+    },
+    {
+      id: 8,
+      title: 'Starfall Reading',
+      desc: 'Reading and math games for Pre-K through Grade 2, blending music, animation, and interactive play.',
+      url: 'https://www.starfall.com/',
+      source: 'Starfall',
+      sourceEmoji: '⭐',
+      emoji: '⭐',
+      cat: 'learning',
+      age: 'Ages 3–7',
+      tags: ['reading', 'early ed'],
+      span: 'span-4',
+      row: ''
+    },
+    {
+      id: 9,
+      title: 'Nick Jr Games',
+      desc: 'Adventure with Dora, Paw Patrol, Peppa Pig and all your favourite Nickelodeon characters.',
+      url: 'https://www.nickjr.com/games/',
+      source: 'Nick Jr.',
+      sourceEmoji: '🐾',
+      emoji: '🐾',
+      cat: 'adventure',
+      age: 'Ages 2–7',
+      tags: ['cartoons', 'Nickelodeon'],
+      span: 'span-4',
+      row: ''
+    },
+    {
+      id: 10,
+      title: 'Poki Kids Games',
+      desc: 'A massive library of browser-based kids games: racing, puzzles, adventure — no install needed.',
+      url: 'https://poki.com/en/c/kids-games',
+      source: 'Poki',
+      sourceEmoji: '🏎️',
+      emoji: '🏎️',
+      cat: 'racing',
+      age: 'Ages 4–12',
+      tags: ['racing', 'variety'],
+      span: 'span-4',
+      row: ''
+    },
+    {
+      id: 11,
+      title: 'Khan Academy Kids',
+      desc: 'Free learning and play app for ages 2–8: reading, math, and science through adorable characters.',
+      url: 'https://www.khanacademy.org/kids',
+      source: 'Khan Academy',
+      sourceEmoji: '🧠',
+      emoji: '📐',
+      cat: 'learning',
+      age: 'Ages 2–8',
+      tags: ['STEM', 'free'],
+      span: 'span-4',
+      row: ''
+    },
+    {
+      id: 12,
+      title: 'Disney Junior Games',
+      desc: 'Adventure with Mickey, Minnie, Doc McStuffins and friends in the colourful world of Disney Junior.',
+      url: 'https://disneyjunior.disney.com/games',
+      source: 'Disney Junior',
+      sourceEmoji: '🏰',
+      emoji: '🏰',
+      cat: 'adventure',
+      age: 'Ages 2–7',
+      tags: ['Disney', 'toddlers'],
+      span: 'span-4',
+      row: ''
+    }
+  ];
+
+  const CAT_LABELS = {
+    puzzle:    'Puzzle',
+    learning:  'Learning',
+    adventure: 'Adventure',
+    creative:  'Creative',
+    racing:    'Racing'
+  };
+
+  function renderGames(filter) {
+    const grid = document.getElementById('gamesGrid');
+    const list = filter === 'all' ? GAMES : GAMES.filter(g => g.cat === filter);
+    grid.innerHTML = list.map(g => `
+      <a class="game-card ${g.span} ${g.row}" data-cat="${g.cat}" href="${g.url}" target="_blank" rel="noopener noreferrer">
+        <div class="card-bg"></div>
+        <div class="card-emoji-bg" aria-hidden="true">${g.emoji}</div>
+        <div class="card-glow"></div>
+        <div class="card-overlay"></div>
+        <div class="card-pattern"></div>
+        <div class="card-cat-chip">
+          <span class="cat-dot"></span>
+          ${CAT_LABELS[g.cat] || g.cat}
+        </div>
+        <div class="card-age-chip">${g.age}</div>
+        <div class="card-body">
+          <div class="card-emoji-sm">${g.emoji}</div>
+          <div class="card-title">${g.title}</div>
+          <div class="card-desc">${g.desc}</div>
+          <div class="card-footer">
+            <div class="card-source">
+              <div class="card-source-dot">${g.sourceEmoji}</div>
+              ${g.source}
+            </div>
+            <div class="card-tags">
+              ${g.tags.map(t => `<span class="card-tag">${t}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+        <div class="card-play-btn" aria-label="Play now">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </a>
+    `).join('');
+  }
+
+  /* ─── Filter logic ──────────────────────────── */
+  document.getElementById('filterBar').addEventListener('click', e => {
+    const btn = e.target.closest('.filter-tab');
+    if (!btn) return;
+    document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderGames(btn.dataset.filter);
+  });
+
+  /* ─── Sources ───────────────────────────────── */
+  const SOURCES = [
+    { name: 'PBS Kids',          url: 'https://pbskids.org/games',                          emoji: '📺', meta: 'pbskids.org · Ages 2–8' },
+    { name: 'Coolmath Games',    url: 'https://www.coolmathgames.com/',                      emoji: '🧮', meta: 'coolmathgames.com · Ages 6–16' },
+    { name: 'Scratch (MIT)',     url: 'https://scratch.mit.edu/explore/projects/games/',     emoji: '🐈', meta: 'scratch.mit.edu · Ages 6–16' },
+    { name: 'ABCya!',            url: 'https://www.abcya.com/',                              emoji: '📚', meta: 'abcya.com · Ages 3–12' },
+    { name: 'Nat Geo Kids',      url: 'https://kids.nationalgeographic.com/games',           emoji: '🌍', meta: 'kids.nationalgeographic.com' },
+    { name: 'Funbrain',          url: 'https://www.funbrain.com/',                           emoji: '🎮', meta: 'funbrain.com · Ages 3–14' },
+    { name: 'Google Doodles',    url: 'https://www.google.com/doodles',                      emoji: '🔵', meta: 'google.com/doodles · All ages' },
+    { name: 'Starfall',          url: 'https://www.starfall.com/',                           emoji: '⭐', meta: 'starfall.com · Ages 3–7' },
+    { name: 'Nick Jr.',          url: 'https://www.nickjr.com/games/',                       emoji: '🐾', meta: 'nickjr.com · Ages 2–7' },
+    { name: 'Poki',              url: 'https://poki.com/en/c/kids-games',                    emoji: '🏎️', meta: 'poki.com · Ages 4–12' },
+    { name: 'Khan Academy Kids', url: 'https://www.khanacademy.org/kids',                    emoji: '🧠', meta: 'khanacademy.org · Ages 2–8' },
+    { name: 'Disney Junior',     url: 'https://disneyjunior.disney.com/games',               emoji: '🏰', meta: 'disneyjunior.disney.com · Ages 2–7' }
+  ];
+
+  const ICON_COLORS = ['rgba(99,102,241,0.2)','rgba(236,72,153,0.2)','rgba(245,158,11,0.2)','rgba(16,185,129,0.2)','rgba(6,182,212,0.2)','rgba(168,85,247,0.2)'];
+  document.getElementById('sourcesGrid').innerHTML = SOURCES.map((s, i) => `
+    <a class="source-chip" href="${s.url}" target="_blank" rel="noopener noreferrer">
+      <div class="source-icon" style="background:${ICON_COLORS[i % ICON_COLORS.length]}">${s.emoji}</div>
+      <div class="source-info">
+        <div class="source-name">${s.name}</div>
+        <div class="source-meta">${s.meta}</div>
+      </div>
+    </a>
+  `).join('');
+
+  /* ─── Initial render ────────────────────────── */
+  renderGames('all');
+</script>
+</body>
+</html>

@@ -20,6 +20,7 @@
       <a href="${PREFIX}index.html#lab">Lab</a>
       <a href="${PREFIX}index.html#stack">Stack</a>
       <a href="${PREFIX}blog.html">Blog</a>
+      <a href="${PREFIX}games.html">Games</a>
       <a href="${PREFIX}index.html#contact">Contact</a>
     </nav>
     <div class="nav-actions">
