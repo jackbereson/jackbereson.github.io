@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "_doc": "Team-wide Claude Code settings for jackbereson.github.io. Committed to git. Personal overrides go in settings.local.json (gitignored).",
+
+  "permissions": {
+    "allow": [
+      "Bash(git status)",
+      "Bash(git status *)",
+      "Bash(git diff)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git branch *)",
+      "Bash(git show *)",
+      "Bash(git stash list)",
+      "Bash(git stash show *)",
+      "Bash(git add docs/*)",
+      "Bash(git add scripts/*)",
+      "Bash(git add server/*)",
+      "Bash(git add .github/*)",
+      "Bash(git add .claude/*)",
+      "Bash(git add CLAUDE.md)",
+      "Bash(git add .gitignore)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+
+      "Bash(gh run list *)",
+      "Bash(gh run view *)",
+      "Bash(gh run watch *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr diff *)",
+      "Bash(gh issue view *)",
+      "Bash(gh issue list *)",
+      "Bash(gh api *)",
+
+      "Bash(ls *)",
+      "Bash(pwd)",
+      "Bash(node --version)",
+      "Bash(node scripts/build-posts.js)",
+      "Bash(npx serve docs *)",
+      "Bash(curl -sI *)",
+      "Bash(curl -s *)",
+      "Bash(file *)",
+
+      "Read(//**)",
+      "Grep(//**)",
+      "Glob(//**)",
+
+      "Edit(//Users/jackbereson/Projects/_old/jackbereson.github.io/**)",
+      "Write(//Users/jackbereson/Projects/_old/jackbereson.github.io/**)",
+
+      "WebFetch(domain:jackbereson.github.io)",
+      "WebFetch(domain:dev.to)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:fonts.googleapis.com)",
+      "WebFetch(domain:fonts.gstatic.com)",
+      "WebFetch(domain:search.google.com)",
+      "WebFetch(domain:developers.facebook.com)",
+      "WebFetch(domain:opengraph.xyz)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean -f *)",
+      "Bash(git branch -D *)",
+      "Bash(npm run build)",
+      "Bash(npm run clean)",
+      "Bash(rimraf *)",
+      "Write(//Users/jackbereson/Projects/_old/jackbereson.github.io/docs/posts/**)",
+      "Edit(//Users/jackbereson/Projects/_old/jackbereson.github.io/docs/posts/**)"
+    ]
+  },
+
+  "env": {
+    "SITE_URL": "https://jackbereson.github.io",
+    "DEPLOY_WORKFLOW": "deploy.yml"
+  },
+
+  "model": "sonnet",
+
+  "includeCoAuthoredBy": true
+}
