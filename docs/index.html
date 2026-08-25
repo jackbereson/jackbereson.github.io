@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jack Bereson — Senior Fullstack Engineer</title>
-  <meta name="description" content="Jack Bereson — Senior Fullstack Engineer. 10+ years building scalable web, mobile, Web3 and cloud platforms." />
+  <meta name="description" content="Jack Bereson — Senior Fullstack Engineer. Building scalable web, mobile, Web3 and cloud platforms." />
   <meta name="author" content="Jack Bereson" />
   <meta name="keywords" content="Jack Bereson, fullstack engineer, javascript, typescript, node.js, react, nextjs, blockchain, web3, senior engineer" />
   <meta name="theme-color" content="#f4f6fc" />
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Jack Bereson" />
   <meta property="og:url" content="https://jackbereson.github.io/" />
   <meta property="og:title" content="Jack Bereson — Senior Fullstack Engineer" />
-  <meta property="og:description" content="10+ years building scalable web, mobile, Web3 and cloud platforms." />
+  <meta property="og:description" content="Building scalable web, mobile, Web3 and cloud platforms." />
   <meta property="og:image" content="https://jackbereson.github.io/images/jackbereson.png" />
   <meta property="og:image:width" content="1376" />
   <meta property="og:image:height" content="898" />
@@ -31,7 +31,7 @@
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Jack Bereson — Senior Fullstack Engineer" />
-  <meta name="twitter:description" content="10+ years building scalable web, mobile, Web3 and cloud platforms." />
+  <meta name="twitter:description" content="Building scalable web, mobile, Web3 and cloud platforms." />
   <meta name="twitter:image" content="https://jackbereson.github.io/images/jackbereson.png" />
 
   <!-- JSON-LD (Person) -->
@@ -492,16 +492,7 @@
     }
     .btn-play .play-icon svg { width: 12px; height: 12px; margin-left: 2px; }
 
-    .hero-stats {
-      display: flex; gap: 36px; flex-wrap: wrap;
-      padding-top: 28px;
-      border-top: 1px solid var(--glass-border);
-      max-width: 580px;
-    }
-    .hero-stat .stat-v { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; }
-    .hero-stat .stat-l { font-size: 11px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.8px; }
-
-    @media (max-width: 860px) { .hero { padding: 32px 24px 48px; } .hero-stats { gap: 24px; } }
+    @media (max-width: 860px) { .hero { padding: 32px 24px 48px; } }
 
     /* Side rail */
     .side-rail {
@@ -1247,7 +1238,7 @@
       </h1>
 
       <p class="lead">
-        I'm Jack Bereson — a fullstack engineer with 10+ years shipping production platforms across web, mobile, Web3 and cloud-native infrastructure. Currently leading 29 ventures and maintaining 90+ open-source repositories.
+        I'm Jack Bereson — a fullstack engineer shipping production platforms across web, mobile, Web3 and cloud-native infrastructure.
       </p>
 
       <div class="hero-actions">
@@ -1263,12 +1254,6 @@
         </a>
       </div>
 
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="stat-v">10+</div><div class="stat-l">Years experience</div></div>
-        <div class="hero-stat"><div class="stat-v">90+</div><div class="stat-l">Repositories</div></div>
-        <div class="hero-stat"><div class="stat-v">29</div><div class="stat-l">Ventures led</div></div>
-        <div class="hero-stat"><div class="stat-v">∞</div><div class="stat-l">Problems solved</div></div>
-      </div>
     </div>
 
     <div class="side-rail">
@@ -1564,7 +1549,7 @@
         </div>
 
         <div style="text-align:center;margin-top:40px;">
-          <a href="https://github.com/jackbereson?tab=repositories" target="_blank" class="btn-ghost">Browse all 90+ repositories →</a>
+          <a href="https://github.com/jackbereson?tab=repositories" target="_blank" class="btn-ghost">Browse all repositories →</a>
         </div>
       </div>
     </section>
@@ -1825,33 +1810,6 @@
           card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
           card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
         });
-      });
-
-      // ============ COUNT-UP STATS ============
-      const statEls = document.querySelectorAll('.hero-stat .stat-v');
-      function animateCount(el, target) {
-        const duration = 1400;
-        const start = performance.now();
-        const suffix = el.textContent.replace(/[0-9]/g, '').trim();
-        if (isNaN(target)) return;
-        function tick(now) {
-          const t = Math.min(1, (now - start) / duration);
-          const eased = 1 - Math.pow(1 - t, 3);
-          const val = Math.floor(target * eased);
-          el.textContent = val + suffix;
-          if (t < 1) requestAnimationFrame(tick);
-          else el.textContent = target + suffix;
-        }
-        requestAnimationFrame(tick);
-      }
-      statEls.forEach(el => {
-        const raw = el.textContent.trim();
-        const num = parseInt(raw.replace(/\D/g, ''), 10);
-        if (!isNaN(num) && num > 0) {
-          el.dataset.target = num;
-          el.textContent = '0' + raw.replace(/[0-9]/g, '').trim();
-          setTimeout(() => animateCount(el, num), 500);
-        }
       });
 
       // Smooth anchor scroll

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jack Bereson — Resume</title>
-  <meta name="description" content="Jack Bereson — Fullstack JS / DevOps / Blockchain engineer. 14+ years of experience across Vietnam, Japan, Korea and Canada." />
+  <meta name="description" content="Jack Bereson — Tech Lead / Blockchain / Fullstack engineer. Experience across Vietnam, Japan, Korea and Canada." />
   <meta name="theme-color" content="#f4f6fc" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
@@ -457,26 +457,6 @@
     .stack-tags span.cat-ops { background: rgba(6,182,212,0.12); color: var(--ink-cyan); border-color: rgba(6,182,212,0.3); }
     .stack-tags span.cat-web3 { background: rgba(245,158,11,0.12); color: var(--ink-amber); border-color: rgba(245,158,11,0.3); }
 
-    /* Bullets list outside of project (for roles that don't need per-project breakdown) */
-    .bullets {
-      list-style: none; padding: 0; margin: 0;
-    }
-    .bullets li {
-      font-size: 14px;
-      color: var(--ink-2);
-      line-height: 1.65;
-      padding-left: 22px;
-      position: relative;
-      margin-bottom: 8px;
-    }
-    .bullets li::before {
-      content: '→';
-      position: absolute;
-      left: 0; top: 0;
-      color: var(--accent);
-      font-weight: 700;
-    }
-
     /* ================ FOOTER ================ */
     footer {
       padding: 40px 0 48px;
@@ -521,13 +501,11 @@
     <div class="header-kicker">// Resume · Updated 2026</div>
     <h1>Jack Bereson</h1>
     <div class="tagline">
-      <span class="chip">Fullstack JS</span>
-      <span class="sep">·</span>
-      <span class="chip">DevOps</span>
+      <span class="chip">Tech Lead</span>
       <span class="sep">·</span>
       <span class="chip">Blockchain</span>
       <span class="sep">·</span>
-      <span>14+ years experience</span>
+      <span class="chip">Fullstack</span>
     </div>
 
     <div class="contact-row">
@@ -544,7 +522,7 @@
 
   <!-- SUMMARY -->
   <div class="summary">
-    I have <strong>14+ years of software engineering experience</strong>, shipping products across web, mobile, blockchain and cloud-native infrastructure. My stack spans <strong>Node.js, React/Next.js, TypeScript, Docker DevOps</strong> and secondary languages like <strong>.NET MVC, Angular, PHP/Laravel, Python, Solidity</strong>. I've worked across startups and corporations in Vietnam, Japan, Korea and Canada — from outsourcing projects to large-scale CRM and crypto platforms. Currently focused on building production Web3 and AI products.
+    I'm a <strong>fullstack engineer</strong> with ten years of building products end to end — <strong>mobile apps, web platforms, games and blockchain systems</strong> — for startups and enterprises across Vietnam, Japan, Korea and Canada, from outsourced delivery teams to enterprise CRM and crypto platforms. Today my focus is <strong>production Web3 and AI</strong>: smart contracts and trading infrastructure alongside <strong>LLM</strong> work — OpenAI and Claude APIs, RAG pipelines and agent tooling.
   </div>
 
   <!-- EXPERIENCE -->
@@ -560,33 +538,24 @@
         <div class="exp-duration">2026 — Present</div>
       </div>
       <div class="exp-main">
-        <div class="exp-company">FypherX — New Frontier Partners · Freelance · HOUZE Group</div>
+        <div class="exp-company">FypherX — Houze Group</div>
         <div class="exp-role">Fullstack Lead · Platform Engineering · Smart Contracts</div>
         <div class="exp-summary">
-          Platform and internal-tooling work for HOUZE Group on an outsourced basis, a perpetual DEX with synthetic stablecoins on BNB Smart Chain for FypherX, and two freelance products — a multi-chain DEX aggregator and an AI-driven derivatives trading platform.
+          Fullstack ownership of FypherX — a perpetual DEX paired with a synthetic-stablecoin and yield protocol. A monorepo of seven independently-versioned sub-projects spanning smart contracts, Java services, two Next.js apps and the Kubernetes deployment.
         </div>
         <div class="proj">
           <div class="proj-head">
-            <div class="proj-name">Fypher Protocol — contracts</div>
+            <div class="proj-name">FypherX — perpetual DEX &amp; synthetic stablecoin protocol</div>
           </div>
           <ul class="proj-bullets">
-            <li><strong>2026.04 — 2026.06</strong> · alpha audit package: 26 Solidity files, ~5,700 lines, 7 suites / 84 unit + invariant tests.</li>
-            <li>Solidity 0.8.22 on Hardhat 2.28 with OpenZeppelin v5.0.2; TransparentUpgradeableProxy per major contract.</li>
-            <li>Synthetic stablecoins RUSD / FYUSD / iRUSD plus staking vaults; out-of-scope modules quarantined for the external auditor.</li>
+            <li><strong>2026.03 — 2026.06</strong> · Trading app, operator console, perp services, risk monitoring and on-chain settlement.</li>
+            <li><strong>Smart contracts</strong> — Solidity 0.8.22 on Hardhat, Ethereum testnets, upgradeable proxies. <strong>ERC-20</strong> stablecoins RUSD and FYUSD plus the FYP governance token; <strong>ERC-4626</strong> yield and staking vaults with silo-escrowed cooldowns. EIP-712-quoted mint and a 7-day burn queue. Packaged for external audit.</li>
+            <li><strong>Backend</strong> — Java 17 · Spring Boot 3.2: REST + WebSocket gateway, single-threaded matching engine, risk service for margin, liquidation and funding, and a web3j settlement relayer. PostgreSQL, Redis, Prometheus.</li>
+            <li><strong>Risk monitoring</strong> — NestJS service scoring peg, reserve, operational and market risk from redundant sources, with circuit breakers and worst-of aggregation.</li>
+            <li><strong>Frontend</strong> — Next.js 16 · React 19 · Tailwind 4, wagmi 3 + viem behind a pluggable DeFi adapter, Privy wallet auth and Sumsub KYC.</li>
+            <li><strong>Delivery</strong> — Dockerised modules to AWS ECR, Kubernetes on dev and staging EKS, a self-hosted Ethereum testnet RPC, Prometheus + Grafana, Vitest and Playwright in CI.</li>
           </ul>
-          <div class="stack-tags"><span class="cat-web3">Solidity</span><span class="cat-web3">Hardhat</span><span class="cat-web3">OpenZeppelin</span><span class="cat-web3">BSC</span></div>
-        </div>
-
-        <div class="proj">
-          <div class="proj-head">
-            <div class="proj-name">FypherX web app &amp; services</div>
-          </div>
-          <ul class="proj-bullets">
-            <li><strong>2026.03 — 2026.06</strong> · customer app, admin dashboard, perp services, RMS and a liquidity bot.</li>
-            <li>Next.js 16 App Router with wagmi 3 + viem, EIP-6963 wallet discovery and Reown AppKit (WalletConnect v2).</li>
-            <li>Kubernetes manifests, multi-stage Dockerfiles per environment, Playwright and Vitest in CI.</li>
-          </ul>
-          <div class="stack-tags"><span class="cat-fe">Next.js</span><span class="cat-fe">React 19</span><span class="cat-fe">TypeScript</span><span class="cat-fe">Tailwind</span><span class="cat-web3">wagmi</span><span class="cat-web3">viem</span><span class="cat-ops">Kubernetes</span><span class="cat-ops">Playwright</span></div>
+          <div class="stack-tags"><span class="cat-web3">Solidity</span><span class="cat-web3">Hardhat</span><span class="cat-web3">Ethereum</span><span class="cat-be">Java 17</span><span class="cat-be">Spring Boot</span><span class="cat-be">NestJS</span><span class="cat-fe">Next.js</span><span class="cat-fe">React 19</span><span class="cat-ops">Kubernetes</span><span class="cat-ops">AWS</span></div>
         </div>
 
         <div class="proj">
@@ -594,7 +563,7 @@
             <div class="proj-name">Eztra — DEX aggregator</div>
           </div>
           <ul class="proj-bullets">
-            <li><strong>2025.09 — 2026.07</strong> · Unified swap + bridge across 8 chains: Ethereum, Polygon, BSC, Arbitrum, Optimism, Base, Avalanche and Solana.</li>
+            <li><strong>2025.09 — 2026.07</strong> · Unified swap + bridge across Ethereum, Polygon, BSC, Arbitrum, Optimism, Base, Avalanche and Solana.</li>
             <li>HD wallet management, Telegram Mini App integration, plus a mobile client and an ops dashboard.</li>
           </ul>
           <div class="stack-tags"><span class="cat-fe">Next.js</span><span class="cat-fe">React 19</span><span class="cat-fe">TypeScript</span><span class="cat-web3">Solana</span><span class="cat-web3">EVM</span><span class="cat-be">Node.js</span><span class="cat-ops">Docker</span></div>
@@ -605,7 +574,7 @@
             <div class="proj-name">Hyper Alpha Arena</div>
           </div>
           <ul class="proj-bullets">
-            <li><strong>2025.10 — 2026.06</strong> · Multi-exchange AI trading platform on Hyperliquid and Binance Futures, with 86 built-in quantitative factors and a custom expression engine.</li>
+            <li><strong>2025.10 — 2026.06</strong> · Multi-exchange AI trading platform on Hyperliquid and Binance Futures, with built-in quantitative factors and a custom expression engine.</li>
             <li>Order-flow, open-interest and funding-rate monitors that trigger automated trades; one-click Docker deployment, English and Chinese UI.</li>
           </ul>
           <div class="stack-tags"><span class="cat-be">Python</span><span class="cat-be">Node.js</span><span class="cat-fe">React</span><span class="cat-ops">Docker</span></div>
@@ -680,7 +649,7 @@
           <ul class="proj-bullets">
             <li><strong>2025.04 — 2025.11</strong> · Wi-Fi provisioning and settings app for the Nimbus miner, a Rockchip RK3588 / RK3566 board.</li>
             <li>Miner admin console, device playground and a back-office for fleet operations.</li>
-            <li>USB-C flashing tool that burns a UUID onto the board and marks its QR token as used in the backend.</li>
+            <li>Worked with a hardware partner in Vietnam to swap the Wi-Fi chip and run mainboard testing before rollout.</li>
           </ul>
           <div class="stack-tags">
             <span class="cat-fe">React</span><span class="cat-fe">Next.js</span><span class="cat-fe">TypeScript</span>
@@ -707,11 +676,10 @@
             <li><strong>2024.10 — 2025.10</strong> · fork of metamask-mobile 7.32, taken from prototype to production release on Android and iOS.</li>
             <li>Pivot from web mini-apps to a native super app — HD wallet, multi-chain support including Bitcoin, in-app chat and video calling via CallKeep.</li>
             <li>End-to-end test suite in Cucumber / WebdriverIO; Android and iOS release pipelines.</li>
-            <li>Team of 6.</li>
           </ul>
           <div class="stack-tags">
             <span class="cat-fe">React Native</span><span class="cat-fe">TypeScript</span><span class="cat-fe">Android</span><span class="cat-fe">iOS</span>
-            <span class="cat-web3">MetaMask Core</span><span class="cat-web3">ethers.js</span><span class="cat-web3">Bitcoin</span><span class="cat-web3">EVM</span>
+            <span class="cat-web3">ethers.js</span><span class="cat-web3">Bitcoin</span><span class="cat-web3">EVM</span>
             <span class="cat-ops">Detox</span><span class="cat-ops">WebdriverIO</span><span class="cat-ops">Bitrise</span>
           </div>
         </div>
@@ -729,7 +697,7 @@
         <div class="exp-company">Blockify</div>
         <div class="exp-role">Project Owner · Team Lead</div>
         <div class="exp-summary">
-          Led a nine-person team — developers, designers and DevOps — across five concurrent products: a Solana tap-to-earn game, two generations of a crypto browser/wallet, and two commercial web platforms.
+          Led the team — developers, designers and DevOps — across concurrent products: a Solana tap-to-earn game, two generations of a crypto browser/wallet, and two commercial web platforms.
         </div>
 
         <div class="proj">
@@ -739,8 +707,8 @@
           </div>
           <ul class="proj-bullets">
             <li><strong>2024.05 — 2025.02</strong> · Tap-to-earn game on Solana with the FFY token — gameplay APIs, reward engine, item trading and in-game shop.</li>
-            <li>Shipped to production five weeks after the first commit; weekly token airdrops to players thereafter.</li>
-            <li>Web app, admin console, landing page and core backend. Team of 6.</li>
+            <li>Weekly token airdrops to players after launch.</li>
+            <li>Web app, admin console, landing page and core backend.</li>
           </ul>
           <div class="stack-tags">
             <span class="cat-fe">Next.js</span><span class="cat-fe">React</span><span class="cat-fe">TypeScript</span>
@@ -758,7 +726,7 @@
             <li><strong>2024.06 — 2024.12</strong> · fork of brave-core 1.70 → 1.71.</li>
             <li>Rebranded Brave for mobile — toolbar, menu, widgets, new-tab page and default search engine.</li>
             <li>Integrated crypto-wallet onboarding and a messenger view; trimmed unused networks and buy/swap flows.</li>
-            <li>Android and iOS builds via GN / Ninja. Team of 3.</li>
+            <li>Android and iOS builds via GN / Ninja.</li>
           </ul>
           <div class="stack-tags">
             <span class="cat-be">C++</span><span class="cat-be">Java</span><span class="cat-be">Chromium</span><span class="cat-be">Brave Core</span>
@@ -790,7 +758,7 @@
           </div>
           <ul class="proj-bullets">
             <li><strong>2024.07 — 2025.10</strong> · Marketing website plus registration and onboarding flow for the Botanika ecosystem.</li>
-            <li>Longest-running product of the period — 14 months of continuous delivery; the device side continued into 2025 as Nimbus.</li>
+            <li>Longest-running product of the period; the device side continued into 2025 as Nimbus.</li>
           </ul>
           <div class="stack-tags">
             <span class="cat-fe">Next.js</span><span class="cat-fe">React</span><span class="cat-fe">TypeScript</span>
@@ -811,7 +779,7 @@
         <div class="exp-company">Wondollars — WonNetwork</div>
         <div class="exp-role">Web3 Fullstack · Chain Infrastructure</div>
         <div class="exp-summary">
-          Built the product surface around WonNetwork, a self-hosted EVM chain — block explorer, DEX, bridge, faucet and airdrop app — while the CXP engagement wound down.
+          Built the product surface around WonNetwork, a self-hosted EVM chain — block explorer, DEX, bridge, faucet and airdrop app.
         </div>
         <div class="proj">
           <div class="proj-head">
@@ -855,10 +823,10 @@
         <div class="exp-duration">2022 — 2023 · 1 yr</div>
       </div>
       <div class="exp-main">
-        <div class="exp-company">CXP Tek · Freelance Web3</div>
+        <div class="exp-company">CXP Tek</div>
         <div class="exp-role">Tech Lead · Web3 Fullstack</div>
         <div class="exp-summary">
-          Led development of a multi-product DeFi platform across Ethereum, BSC and Polygon — eight product lines, each shipping a paired user frontend and admin console. Team of 9. Alongside it, contract work on Web3 platforms for Vietnamese and international clients — crypto news portals, token launchpads and NFT marketplaces.
+          Led development of a multi-product DeFi platform across Ethereum, BSC and Polygon — each product line shipping a paired user frontend and admin console. Alongside it, contract work on Web3 platforms for Vietnamese and international clients — crypto news portals, token launchpads and NFT marketplaces.
         </div>
 
         <div class="proj">
@@ -922,7 +890,7 @@
           <ul class="proj-bullets">
             <li>Cryptocurrency news portal with mobile app (React Native).</li>
             <li>News content management system for editors.</li>
-            <li>Team of 3 developers. Fullstack development + operations.</li>
+            <li>Fullstack development + operations.</li>
           </ul>
           <div class="stack-tags">
             <span class="cat-be">Node.js</span><span class="cat-be">Mongoose</span><span class="cat-be">GraphQL</span><span class="cat-be">RxJS</span><span class="cat-be">TypeScript</span>
@@ -960,7 +928,6 @@
             <li>NFT launchpad with unlock packages, airdrop, listing and trade on Ethereum.</li>
             <li>Leverages Arbitrum Layer 2 to reduce gas fees for NFT transactions.</li>
             <li>ERC1155 smart contracts, full admin panel for NFT/token management.</li>
-            <li>Team of 2 developers.</li>
           </ul>
           <div class="stack-tags">
             <span class="cat-web3">Solidity</span><span class="cat-web3">ERC1155</span><span class="cat-web3">Hardhat</span><span class="cat-web3">Arbitrum</span><span class="cat-web3">ETH</span>
@@ -977,7 +944,6 @@
           <ul class="proj-bullets">
             <li>ICO launchpad on BSC — token sale, airdrop, NFT listing and trading with BNB.</li>
             <li>Smart contracts: ERC20 + ERC1155. Admin dashboard.</li>
-            <li>Team of 3 developers.</li>
           </ul>
           <div class="stack-tags">
             <span class="cat-web3">Solidity</span><span class="cat-web3">ERC20</span><span class="cat-web3">ERC1155</span><span class="cat-web3">BSC</span>
@@ -1125,14 +1091,43 @@
         <div class="exp-summary">
           Early engineer at a cryptocurrency exchange startup. Managed, maintained and extended the Bcash exchange, built an intermediary payment gateway, and developed the corporate website.
         </div>
-        <ul class="bullets">
-          <li>Developed &amp; operated <strong>bcash.exchange</strong> — a crypto exchange platform.</li>
-          <li>Built <strong>gateway.bcashpay.org</strong> — intermediary payment gateway for virtual currency transactions.</li>
-          <li>Developed corporate site <strong>trfxinternational.com</strong> in React + TypeScript.</li>
-          <li>Deployed ETH and BTC node networks on Linux. Connected to ETH chain via Web3.js.</li>
-          <li>Worked with distributed networks, Hyperledger, dApps and blockchain fundamentals.</li>
-          <li>Additional outsourcing projects — PHP, Laravel, WordPress.</li>
-        </ul>
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">bcash.exchange — crypto exchange</div>
+          </div>
+          <ul class="proj-bullets">
+            <li>Developed and operated the exchange platform end to end.</li>
+            <li>Deployed ETH and BTC node networks on Linux; connected to the ETH chain via Web3.js.</li>
+            <li>Worked across distributed networks, Hyperledger, dApps and blockchain fundamentals.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-web3">Web3.js</span><span class="cat-web3">Ethereum</span><span class="cat-web3">Bitcoin</span>
+            <span class="cat-web3">Hyperledger</span><span class="cat-ops">Linux</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">gateway.bcashpay.org — payment gateway</div>
+          </div>
+          <ul class="proj-bullets">
+            <li>Intermediary payment gateway for virtual-currency transactions.</li>
+          </ul>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">trfxinternational.com — corporate site</div>
+          </div>
+          <ul class="proj-bullets">
+            <li>Corporate website in React + TypeScript.</li>
+            <li>Additional outsourcing work in PHP, Laravel and WordPress.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-fe">React</span><span class="cat-fe">TypeScript</span>
+            <span class="cat-be">PHP</span><span class="cat-be">Laravel</span><span class="cat-be">WordPress</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1149,15 +1144,34 @@
         <div class="exp-summary">
           Developed and operated the <strong>Blood.land</strong> webgame plus supporting React Native mobile apps. Full-cycle involvement — ideation, UI design, backend, gameplay and ops.
         </div>
-        <ul class="bullets">
-          <li>Proposed product ideas and designed interfaces.</li>
-          <li>Frontend architecture with React — replaced Google Maps with Leaflet for cost.</li>
-          <li>Backend API in Node.js + Express with 3-layer model.</li>
-          <li>MongoDB + Mongoose for schema-based data modeling.</li>
-          <li>Built React Native mobile companion apps.</li>
-          <li>Team collaboration via Trello and Git.</li>
-          <li>Real-time webgame deployed on Ubuntu servers.</li>
-        </ul>
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">Blood.land — real-time webgame</div>
+          </div>
+          <ul class="proj-bullets">
+            <li>Proposed product ideas and designed the interfaces.</li>
+            <li>Frontend architecture in React — swapped Google Maps for Leaflet to cut cost.</li>
+            <li>Backend API in Node.js + Express on a 3-layer model, MongoDB + Mongoose for schema-based modeling.</li>
+            <li>Deployed on Ubuntu servers; team collaboration via Trello and Git.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-fe">React</span><span class="cat-fe">Leaflet</span>
+            <span class="cat-be">Node.js</span><span class="cat-be">Express</span>
+            <span class="cat-db">MongoDB</span><span class="cat-db">Mongoose</span><span class="cat-ops">Ubuntu</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">Blood.land mobile companions</div>
+          </div>
+          <ul class="proj-bullets">
+            <li>React Native companion apps for the webgame.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-fe">React Native</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1176,7 +1190,9 @@
         </div>
 
         <div class="proj">
-          <div class="proj-name">Kyuyo Payroll Software (1 year)</div>
+          <div class="proj-head">
+            <div class="proj-name">Kyuyo Payroll Software (1 year)</div>
+          </div>
           <ul class="proj-bullets">
             <li>Waterfall development with Redmine for bug/issue/task tracking.</li>
             <li>C# + .NET MVC 4 + RESTful APIs. 3-layer architecture with Entity Framework for SQL ↔ class mapping.</li>
@@ -1191,16 +1207,20 @@
         </div>
 
         <div class="proj">
-          <div class="proj-name">Kintai Timekeeping (6 months) + HR Outsourcing</div>
+          <div class="proj-head">
+            <div class="proj-name">Kintai Timekeeping (6 months) + HR Outsourcing</div>
+          </div>
           <ul class="proj-bullets">
             <li>Timekeeping software, HR &amp; statistics tools, corporate websites.</li>
           </ul>
         </div>
 
         <div class="proj">
-          <div class="proj-name">PowerEgg Autotest (1 year)</div>
+          <div class="proj-head">
+            <div class="proj-name">PowerEgg Autotest (1 year)</div>
+          </div>
           <ul class="proj-bullets">
-            <li>Built Selenium Python autotest suite for PowerEgg (1000+ test cases).</li>
+            <li>Built Selenium Python autotest suite for PowerEgg.</li>
             <li>Jenkins CI — auto build, deploy, test and report via Git triggers.</li>
           </ul>
           <div class="stack-tags">
@@ -1223,14 +1243,22 @@
         <div class="exp-summary">
           Built <strong>plwindow.vn</strong> and the production web-app for plastic door price-bomb calculator.
         </div>
-        <ul class="bullets">
-          <li>UI ideation &amp; design with Photoshop.</li>
-          <li>C# + .NET MVC 4 + 3-layer architecture + Entity Framework.</li>
-          <li>MSSQL database design with stored procedures for business logic.</li>
-          <li>Cloudflare DNS, IIS deployment.</li>
-          <li>Frontend with Bootstrap 3 + jQuery.</li>
-          <li>Source control via SVN.</li>
-        </ul>
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">plwindow.vn — price calculator web app</div>
+          </div>
+          <ul class="proj-bullets">
+            <li>UI ideation and design in Photoshop.</li>
+            <li>C# + .NET MVC 4 on a 3-layer architecture with Entity Framework.</li>
+            <li>MSSQL schema design with stored procedures carrying the business logic.</li>
+            <li>Bootstrap 3 + jQuery frontend; Cloudflare DNS, IIS deployment, SVN source control.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-be">C#</span><span class="cat-be">.NET MVC 4</span><span class="cat-be">Entity Framework</span>
+            <span class="cat-fe">Bootstrap 3</span><span class="cat-fe">jQuery</span>
+            <span class="cat-db">MSSQL</span><span class="cat-ops">IIS</span><span class="cat-ops">Cloudflare</span><span class="cat-ops">SVN</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1259,14 +1287,22 @@
         <div class="exp-company">VietConnect</div>
         <div class="exp-role">Web Developer · Outsource (AkzoNobel HR)</div>
         <div class="exp-summary">Human Resource website programming — outsourced project for AkzoNobel.</div>
-        <ul class="bullets">
-          <li>Project setup and C# + HTML/CSS coding.</li>
-          <li>Deployment via IIS, source control with SVN.</li>
-          <li>3-layer code management pattern with MSSQL.</li>
-          <li>Database design with stored procedures.</li>
-          <li>SOAP web services consumed via AJAX.</li>
-          <li>jQuery-driven UI effects. First exposure to team-based hiring processes.</li>
-        </ul>
+        <div class="proj">
+          <div class="proj-head">
+            <div class="proj-name">AkzoNobel HR portal</div>
+          </div>
+          <ul class="proj-bullets">
+            <li>Project setup and C# + HTML/CSS implementation on a 3-layer pattern.</li>
+            <li>MSSQL schema design with stored procedures.</li>
+            <li>SOAP web services consumed over AJAX; jQuery-driven UI effects.</li>
+            <li>IIS deployment, SVN source control.</li>
+          </ul>
+          <div class="stack-tags">
+            <span class="cat-be">C#</span><span class="cat-be">SOAP</span>
+            <span class="cat-fe">jQuery</span><span class="cat-fe">AJAX</span>
+            <span class="cat-db">MSSQL</span><span class="cat-ops">IIS</span><span class="cat-ops">SVN</span>
+          </div>
+        </div>
       </div>
     </div>
 
