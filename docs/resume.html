@@ -456,6 +456,7 @@
     .stack-tags span.cat-db { background: rgba(16,185,129,0.12); color: var(--ink-emerald); border-color: rgba(16,185,129,0.3); }
     .stack-tags span.cat-ops { background: rgba(6,182,212,0.12); color: var(--ink-cyan); border-color: rgba(6,182,212,0.3); }
     .stack-tags span.cat-web3 { background: rgba(245,158,11,0.12); color: var(--ink-amber); border-color: rgba(245,158,11,0.3); }
+    .stack-tags span.cat-ai { background: rgba(139,92,246,0.12); color: var(--ink-violet); border-color: rgba(139,92,246,0.3); }
 
     /* ================ FOOTER ================ */
     footer {
@@ -522,7 +523,7 @@
 
   <!-- SUMMARY -->
   <div class="summary">
-    I'm a <strong>fullstack engineer</strong> with ten years of building products end to end — <strong>mobile apps, web platforms, games and blockchain systems</strong> — for startups and enterprises across Vietnam, Japan, Korea and Canada, from outsourced delivery teams to enterprise CRM and crypto platforms. Today my focus is <strong>production Web3 and AI</strong>: smart contracts and trading infrastructure alongside <strong>LLM</strong> work — OpenAI and Claude APIs, RAG pipelines and agent tooling.
+    I'm a <strong>fullstack engineer</strong> with twelve years of building products end to end — <strong>mobile apps, web platforms, games and blockchain systems</strong> — for startups and enterprises across Vietnam, Japan, Korea and Canada, from outsourced delivery teams to enterprise CRM and crypto platforms. Today my focus is <strong>production Web3 and AI</strong>: smart contracts and trading infrastructure alongside <strong>LLM</strong> work — OpenAI and Claude APIs, RAG pipelines and agent tooling.
   </div>
 
   <!-- EXPERIENCE -->
@@ -614,13 +615,18 @@
 
         <div class="proj">
           <div class="proj-head">
-            <div class="proj-name">Houze Agent</div>
+            <div class="proj-name">Houze Agent — AI sales &amp; marketing proptech</div>
           </div>
           <ul class="proj-bullets">
-            <li><strong>2026.07 — 2026.08</strong> · Field-agent monorepo — a Flutter app plus four web surfaces: agent, blog, ops console and partner portal.</li>
-            <li>End-to-end encrypted contacts: the server never sees plaintext PII, the app keeps a decrypted store on device and does its own search and filtering.</li>
+            <li><strong>2026.07 — 2026.08</strong> · AI-first proptech monorepo for real-estate field agents — a Flutter app plus four web surfaces: agent, blog, ops console and partner portal. Built on a proptech stack to get ahead of the Vietnamese property market, where agents still sell listings by hand.</li>
+            <li><strong>AI-driven product development</strong> — the whole build loop runs on AI: generated modules, schemas and UI scaffolding, AI-assisted review and release notes, so a small team ships five surfaces in two months.</li>
+            <li><strong>AI image</strong> — listing photo cleanup, sky and lighting replacement, virtual staging and auto-generated cover art, so every property goes live with a consistent, market-ready gallery instead of raw phone shots.</li>
+            <li><strong>AI video</strong> — listings turned into short-form walkthrough clips with generated voiceover, subtitles and music, sized for TikTok, Reels and Zalo, rendered from the same asset pipeline the images use.</li>
+            <li><strong>AI marketing for Sales</strong> — per-listing copy in Vietnamese and English, multi-channel campaign kits, buyer-persona targeting and drafted lead follow-ups, so each agent runs a full content engine without a marketing team behind them.</li>
+            <li><strong>End-to-end encrypted contacts</strong> — the server never sees plaintext PII; the app keeps a decrypted store on device and runs its own search, filtering and lead matching there, so the AI sales tooling works on a client's data without ever exposing it.</li>
           </ul>
           <div class="stack-tags">
+            <span class="cat-ai">Generative AI</span><span class="cat-ai">AI Image</span><span class="cat-ai">AI Video</span><span class="cat-ai">AI Marketing</span><span class="cat-ai">Proptech</span>
             <span class="cat-fe">Flutter</span><span class="cat-fe">Dart</span><span class="cat-fe">Next.js</span><span class="cat-fe">TypeScript</span>
             <span class="cat-be">Node.js</span><span class="cat-be">E2E Encryption</span>
             <span class="cat-ops">Docker</span>
@@ -824,64 +830,29 @@
       </div>
       <div class="exp-main">
         <div class="exp-company">CXP Tek</div>
-        <div class="exp-role">Tech Lead · Web3 Fullstack</div>
+        <div class="exp-role">Sub Lead · EVM Blockchain · Web3 Fullstack</div>
         <div class="exp-summary">
-          Led development of a multi-product DeFi platform across Ethereum, BSC and Polygon — each product line shipping a paired user frontend and admin console. Alongside it, contract work on Web3 platforms for Vietnamese and international clients — crypto news portals, token launchpads and NFT marketplaces.
+          Sub-lead on the EVM blockchain side of the CXP DeFi platform — a VIC stablecoin ecosystem (VIC pegged to the Vietnamese đồng) spanning finance and pool modules, a DEX, a cross-chain bridge and VIC staking on Ethereum, BSC and Polygon, each product line shipping a paired user frontend and admin console. Alongside it, contract work on Web3 platforms for Vietnamese and international clients — crypto news portals, token launchpads and NFT marketplaces.
         </div>
 
         <div class="proj">
           <div class="proj-head">
-            <div class="proj-name">CXP Core — Finance &amp; Pools</div>
+            <div class="proj-name">CXP Platform — VIC stablecoin DeFi suite</div>
           </div>
           <ul class="proj-bullets">
-            <li><strong>2022.06 — 2023.06</strong> · Finance, liquidation pool, liquidity pool and provider modules — each with its own user frontend and admin console.</li>
-            <li>Wallet connection plus on-chain reads and writes via ethers, Web3.js and wagmi.</li>
+            <li><strong>2022.06 — 2023.06</strong> · Multi-product DeFi platform built around <strong>VIC</strong>, a stablecoin pegged to the Vietnamese đồng (1 VIC ≈ 1 VND), running across Ethereum, BSC and Polygon. Every product line shipped a user frontend and a matching admin console.</li>
+            <li><strong>Core — finance &amp; pools</strong> · Finance, liquidation pool, liquidity pool and provider modules, each with its own frontend and console.</li>
+            <li><strong>Swap — DEX</strong> · Uniswap-based swap interface shipped as <code>@cxpswap/interface</code>; token swaps, routing and token lists across the three chains. (2022.07 — 2022.10)</li>
+            <li><strong>Bridge</strong> · Cross-chain transfer of VIC and platform assets between Ethereum, BSC and Polygon; rebuilt as v2 in December 2022. (2022.06 — 2022.12)</li>
+            <li><strong>Mini Investment — VIC staking</strong> · Staking product for VIC, with a user application and a matching admin console. (2023.03 — 2023.06)</li>
+            <li>Wallet connection plus on-chain reads and writes via ethers, Web3.js, wagmi and web3-react.</li>
           </ul>
           <div class="stack-tags">
-            <span class="cat-fe">Next.js</span><span class="cat-fe">React</span><span class="cat-fe">Ant Design</span><span class="cat-fe">TypeScript</span><span class="cat-fe">Redux Toolkit</span>
-            <span class="cat-web3">ethers.js</span><span class="cat-web3">Web3.js</span><span class="cat-web3">wagmi</span><span class="cat-web3">Ethereum</span><span class="cat-web3">BSC</span><span class="cat-web3">Polygon</span>
+            <span class="cat-web3">ethers.js</span><span class="cat-web3">wagmi</span><span class="cat-web3">Uniswap SDK</span>
+            <span class="cat-web3">Ethereum</span><span class="cat-web3">BSC</span><span class="cat-web3">Polygon</span>
           </div>
         </div>
 
-        <div class="proj">
-          <div class="proj-head">
-            <div class="proj-name">CXP Swap — DEX</div>
-          </div>
-          <ul class="proj-bullets">
-            <li><strong>2022.07 — 2022.10</strong> · Uniswap-based swap interface shipped as <code>@cxpswap/interface</code>, with a paired admin console.</li>
-            <li>Token swaps, routing and token lists across Ethereum, BSC and Polygon.</li>
-          </ul>
-          <div class="stack-tags">
-            <span class="cat-fe">React</span><span class="cat-fe">TypeScript</span><span class="cat-fe">Redux Toolkit</span><span class="cat-fe">i18next</span>
-            <span class="cat-web3">Uniswap SDK</span><span class="cat-web3">ethers.js</span><span class="cat-web3">web3-react</span>
-          </div>
-        </div>
-
-        <div class="proj">
-          <div class="proj-head">
-            <div class="proj-name">CXP Bridge</div>
-          </div>
-          <ul class="proj-bullets">
-            <li><strong>2022.06 — 2022.12</strong> · Cross-chain bridge with an admin console; rebuilt as v2 in December 2022.</li>
-          </ul>
-          <div class="stack-tags">
-            <span class="cat-fe">Next.js</span><span class="cat-fe">React</span><span class="cat-fe">TypeScript</span>
-            <span class="cat-web3">ethers.js</span><span class="cat-web3">Ethereum</span><span class="cat-web3">BSC</span><span class="cat-web3">Polygon</span>
-          </div>
-        </div>
-
-        <div class="proj">
-          <div class="proj-head">
-            <div class="proj-name">Mini Investment</div>
-          </div>
-          <ul class="proj-bullets">
-            <li><strong>2023.03 — 2023.06</strong> · Investment product with a user application and a matching admin console.</li>
-          </ul>
-          <div class="stack-tags">
-            <span class="cat-fe">Next.js</span><span class="cat-fe">React</span><span class="cat-fe">Ant Design</span><span class="cat-fe">TypeScript</span>
-            <span class="cat-web3">wagmi</span><span class="cat-web3">ethers.js</span>
-          </div>
-        </div>
         <div class="proj">
           <div class="proj-head">
             <div class="proj-name">iCryptoBook</div>
@@ -965,7 +936,7 @@
         <div class="exp-company">K-Group Asia</div>
         <div class="exp-role">Senior Frontend Developer · Team Lead</div>
         <div class="exp-summary">
-          Led the frontend team (React · Next.js · Tailwind · DevOps) on two Web3-adjacent products. Responsible for architecture decisions, code reviews and CI/CD pipelines.
+          Led a frontend team of four — two senior, two junior — (React · Next.js · Tailwind · DevOps) on two Web3-adjacent products. Responsible for architecture decisions, code reviews and CI/CD pipelines.
         </div>
 
         <div class="proj">
@@ -1043,7 +1014,7 @@
       <div class="exp-main">
         <div class="exp-company">Mcom Solution</div>
         <div class="exp-role">JavaScript Leader · Backend</div>
-        <div class="exp-summary">Led backend JavaScript development across two production e-commerce systems.</div>
+        <div class="exp-summary">Led a backend team of three junior engineers on JavaScript development across two production e-commerce systems.</div>
 
         <div class="proj">
           <div class="proj-head">
