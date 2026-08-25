@@ -56,19 +56,17 @@ Static marketing + blog site for Jack Bereson (Senior Fullstack Engineer), deplo
 │   ├── routes/blogs.js
 │   ├── seed.js
 │   └── .env.example
-├── src/                           ← LEGACY PostHTML/SCSS/Webpack source
-│   ├── js/, scss/, views/, images/
-│   └── (currently unused — /docs is authored directly)
-├── webpack.config.js              ← legacy
-├── posthtml.json                  ← legacy
-├── package.json                   ← legacy build toolchain (npm run build)
+├── package.json                   ← metadata + two convenience scripts, no build step
 └── README.MD
 ```
 
-**Rule of thumb:** edit `/docs/` directly. The `/src/` + `webpack.config.js` + `posthtml.json` toolchain
-is from an earlier incarnation of the site. Do **not** run `npm run build` — it will clobber `/docs/`
-with stale output (`"clean": "rimraf docs/*"`). If you need to use SCSS or module partials again, first
-audit and modernize the build pipeline.
+**Rule of thumb:** edit `/docs/` directly. There is no build step for the site itself — the deploy
+uploads `/docs/` verbatim. The old PostHTML/SCSS/Webpack pipeline (`/src/`, `webpack.config.js`,
+`posthtml.json`, and the devDependencies that drove them) was deleted; if you ever want SCSS or module
+partials back, build a fresh pipeline rather than resurrecting that one.
+
+`package.json` carries no dependencies. Its two scripts are `npm run build:posts`
+(`node scripts/build-posts.js`) and `npm run serve` (`npx serve docs -p 4321`).
 
 ---
 
@@ -91,13 +89,20 @@ Typical end-to-end deploy: **~20–30 seconds** from push to live.
 
 ## Design system (in-line, no CSS file)
 
-Every page in `/docs/` inlines its CSS in a `<style>` block. Design tokens are duplicated per file — if
-you change them, change them **in all three** (`index.html`, `blog.html`, `blog-post.html`, and the
-template used by `scripts/build-posts.js` via `docs/blog-post.html`). See `.claude/rules/code-style.md`
-for the full token list and component conventions.
+Every page in `/docs/` inlines its CSS in a `<style>` block, and each ships **two** token blocks:
+`:root` (light — the default) and `html[data-theme="dark"]`. Tokens are duplicated per file — if you
+change them, change them in **all five** (`index.html`, `blog.html`, `games.html`, `blog-post.html`,
+`resume.html`; `scripts/build-posts.js` inherits `docs/blog-post.html`'s block). See
+`.claude/rules/code-style.md` for the full token list, the anti-FOUC boot script, and component
+conventions.
 
-Key vibes: **glassmorphism** over a dark `#05060f` stage, Inter font, indigo (`#6366f1`) + pink (`#ec4899`)
-gradient accents, animated orbs with `filter: blur(80px)`, scanline + grain overlays.
+**Light is the default theme.** `prefers-color-scheme` is deliberately ignored; dark is opt-in via the
+nav toggle and persisted in `localStorage.theme`. The toggle button (markup + CSS) lives in
+`docs/common.js` so it isn't duplicated across pages.
+
+Key vibes: **glassmorphism** — a soft `#f4f6fc` stage in light, near-black `#0a0a0a` in dark — Inter
+font, indigo (`#6366f1`) + pink (`#ec4899`) gradient accents, animated orbs with `filter: blur(80px)`,
+scanline + grain overlays.
 
 ---
 
@@ -146,11 +151,10 @@ returns it as a **comma-separated string**. Always normalize — see `.claude/ru
 
 ## When NOT to do things
 
-- **Don't add Node dependencies to the root `package.json` for anything that ships to prod.** The deploy
-  serves `/docs/` verbatim — the root toolchain is dev-only. If you need runtime JS, inline it or add a
-  file under `/docs/`.
+- **Don't add dependencies to the root `package.json`.** It is intentionally dependency-free: CI runs
+  `node scripts/build-posts.js` with no `npm install`, and the deploy serves `/docs/` verbatim. If you
+  need runtime JS, inline it or add a file under `/docs/`.
 - **Don't commit `/docs/posts/`.** It's in `.gitignore`. CI regenerates it every run.
-- **Don't use `npm run build`.** It's the legacy PostHTML pipeline and will wipe `/docs/`.
 
 ---
 

@@ -1,0 +1,312 @@
+{
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/.claude/settings.json": {
+    "mtime": 1776911378.123229,
+    "ast_hash": "bd38ed08ea0deb6ae4d655ae9823c518",
+    "semantic_hash": "bd38ed08ea0deb6ae4d655ae9823c518"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/bundle.js": {
+    "mtime": 1776770852.782697,
+    "ast_hash": "e1e147ad0aafae0422236bfc7244dfaa",
+    "semantic_hash": "e1e147ad0aafae0422236bfc7244dfaa"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/common.js": {
+    "mtime": 1776912743.8689525,
+    "ast_hash": "a47cffe89a5e64684ac94e7c44afb167",
+    "semantic_hash": "a47cffe89a5e64684ac94e7c44afb167"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/package.json": {
+    "mtime": 1776770852.787007,
+    "ast_hash": "7be4d28b52c114221789fb39a731aa40",
+    "semantic_hash": "7be4d28b52c114221789fb39a731aa40"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/posthtml.json": {
+    "mtime": 1663271413.0,
+    "ast_hash": "3ebda9e40c99e193b0e74a5e7cdec454",
+    "semantic_hash": "3ebda9e40c99e193b0e74a5e7cdec454"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/scripts/build-posts.js": {
+    "mtime": 1776865552.6621957,
+    "ast_hash": "3aebcbf892dd2b58587bc81d53def9d7",
+    "semantic_hash": "3aebcbf892dd2b58587bc81d53def9d7"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/server/index.js": {
+    "mtime": 1776854104.9218478,
+    "ast_hash": "a3c82a3f9ba3c90e3b08754c184e6d76",
+    "semantic_hash": "a3c82a3f9ba3c90e3b08754c184e6d76"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/server/models/Blog.js": {
+    "mtime": 1776854082.1451902,
+    "ast_hash": "6e1062b5176c738e902ad0b50e84c3fd",
+    "semantic_hash": "6e1062b5176c738e902ad0b50e84c3fd"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/server/package.json": {
+    "mtime": 1776854070.5587347,
+    "ast_hash": "18326e918a0bb9997934498eea60b35c",
+    "semantic_hash": "18326e918a0bb9997934498eea60b35c"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/server/routes/blogs.js": {
+    "mtime": 1776854096.1576087,
+    "ast_hash": "d73c456271a62c2615e559047bad2e82",
+    "semantic_hash": "d73c456271a62c2615e559047bad2e82"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/server/seed.js": {
+    "mtime": 1776854132.396618,
+    "ast_hash": "f00313bb28ab4db0e8349b9c732ef0fa",
+    "semantic_hash": "f00313bb28ab4db0e8349b9c732ef0fa"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/js/icryptobook.helper.js": {
+    "mtime": 1776770852.787747,
+    "ast_hash": "13898057874ab0217a53371ffe1ce6a8",
+    "semantic_hash": "13898057874ab0217a53371ffe1ce6a8"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/js/main.js": {
+    "mtime": 1776770852.7880468,
+    "ast_hash": "18100ef797dcb71514509e903a61c267",
+    "semantic_hash": "18100ef797dcb71514509e903a61c267"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/js/module.js": {
+    "mtime": 1776770852.7883806,
+    "ast_hash": "60d47a042df8557105911019f48c4dbc",
+    "semantic_hash": "60d47a042df8557105911019f48c4dbc"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/webpack.config.js": {
+    "mtime": 1663271434.0,
+    "ast_hash": "44572c59acd6b05074512b66d3cb641d",
+    "semantic_hash": "44572c59acd6b05074512b66d3cb641d"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/.claude/agents/code-reviewer.md": {
+    "mtime": 1776911888.910778,
+    "ast_hash": "aaf395035d414d3c5db188e978ffcec1",
+    "semantic_hash": "aaf395035d414d3c5db188e978ffcec1"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/.claude/agents/security-auditor.md": {
+    "mtime": 1776911951.5193748,
+    "ast_hash": "ee55a5eebeca8851201d759518a40548",
+    "semantic_hash": "ee55a5eebeca8851201d759518a40548"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/.claude/commands/deploy.md": {
+    "mtime": 1776911582.8932986,
+    "ast_hash": "c7cb0b571f4a86bbb066e362fe57d777",
+    "semantic_hash": "c7cb0b571f4a86bbb066e362fe57d777"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/.claude/commands/fix-issue.md": {
+    "mtime": 1776911559.2866623,
+    "ast_hash": "0cf12ca6160d3448c22db31b635ae0c6",
+    "semantic_hash": "0cf12ca6160d3448c22db31b635ae0c6"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/.claude/commands/review.md": {
+    "mtime": 1776911468.9639916,
+    "ast_hash": "529ab052ad105f3e2887eed7cd595bca",
+    "semantic_hash": "529ab052ad105f3e2887eed7cd595bca"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/.claude/rules/api-conventions.md": {
+    "mtime": 1776911717.396642,
+    "ast_hash": "e757eb9d3fe5bb177d38f723feadc91c",
+    "semantic_hash": "e757eb9d3fe5bb177d38f723feadc91c"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/.claude/rules/code-style.md": {
+    "mtime": 1776911652.2439535,
+    "ast_hash": "60c6dce5c4391dbb3ec00f02f6a6858d",
+    "semantic_hash": "60c6dce5c4391dbb3ec00f02f6a6858d"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/.claude/rules/testing.md": {
+    "mtime": 1776911684.3138013,
+    "ast_hash": "1d90b79c94ec99058f257d060a759789",
+    "semantic_hash": "1d90b79c94ec99058f257d060a759789"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/.claude/skills/deploy/SKILL.md": {
+    "mtime": 1776911820.1670897,
+    "ast_hash": "80aaa8fc6269ed0e615e45ae4784ce73",
+    "semantic_hash": "80aaa8fc6269ed0e615e45ae4784ce73"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/.claude/skills/security-review/SKILL.md": {
+    "mtime": 1776911755.6170323,
+    "ast_hash": "5db28d8faa06f4cb0cfafe1b4f548a8b",
+    "semantic_hash": "5db28d8faa06f4cb0cfafe1b4f548a8b"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/.github/workflows/deploy.yml": {
+    "mtime": 1776865597.319269,
+    "ast_hash": "f115c099a7a64417f5372e657c117db8",
+    "semantic_hash": "f115c099a7a64417f5372e657c117db8"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/CLAUDE.md": {
+    "mtime": 1776909966.2967727,
+    "ast_hash": "64f74090d3ff321abe26a7657884c3b9",
+    "semantic_hash": "64f74090d3ff321abe26a7657884c3b9"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/README.MD": {
+    "mtime": 1663271098.0,
+    "ast_hash": "ad62497249cfe2fd95998aa4050042df",
+    "semantic_hash": "ad62497249cfe2fd95998aa4050042df"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/blog-post.html": {
+    "mtime": 1776865562.5195706,
+    "ast_hash": "62522c7bcaaf55cba4e8959021720bf5",
+    "semantic_hash": "62522c7bcaaf55cba4e8959021720bf5"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/blog.html": {
+    "mtime": 1776865589.6291296,
+    "ast_hash": "fe56f6be46494e6e3d68835af49b0d69",
+    "semantic_hash": "fe56f6be46494e6e3d68835af49b0d69"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/games.html": {
+    "mtime": 1778521407.604735,
+    "ast_hash": "afc857a31c9b56707b220535925931f0",
+    "semantic_hash": "afc857a31c9b56707b220535925931f0"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/index.html": {
+    "mtime": 1776865341.628272,
+    "ast_hash": "9a000f63da84da9990c942c129d714d0",
+    "semantic_hash": "9a000f63da84da9990c942c129d714d0"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/resume.html": {
+    "mtime": 1776780531.6712687,
+    "ast_hash": "9cca22392860b396cc0b26bf6e3e34dd",
+    "semantic_hash": "9cca22392860b396cc0b26bf6e3e34dd"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/views/components/col-corner.html": {
+    "mtime": 1663270750.0,
+    "ast_hash": "4d5d0a13c7b9e082027e9c5900ed269b",
+    "semantic_hash": "4d5d0a13c7b9e082027e9c5900ed269b"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/views/components/col-img.html": {
+    "mtime": 1663270750.0,
+    "ast_hash": "40d66436e6b51b9af064f67d53ea5625",
+    "semantic_hash": "40d66436e6b51b9af064f67d53ea5625"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/views/components/col-main.html": {
+    "mtime": 1663272405.0,
+    "ast_hash": "8632def42ed0ad535dede2ac6ce0a686",
+    "semantic_hash": "8632def42ed0ad535dede2ac6ce0a686"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/views/components/head.html": {
+    "mtime": 1663270750.0,
+    "ast_hash": "c6cf97cc6f1774ad4c9c7dfe2cf7dbff",
+    "semantic_hash": "c6cf97cc6f1774ad4c9c7dfe2cf7dbff"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/views/components/nha-mai-teo.html": {
+    "mtime": 1776770852.7890177,
+    "ast_hash": "e463e7cc58094c067027f93c638f03ac",
+    "semantic_hash": "e463e7cc58094c067027f93c638f03ac"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/views/index.html": {
+    "mtime": 1776770852.7894883,
+    "ast_hash": "3bce773bccfedc28605cb41f4c4460c9",
+    "semantic_hash": "3bce773bccfedc28605cb41f4c4460c9"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/le-thanh-vuong-js-fullstack-blockchain.pdf": {
+    "mtime": 1663271116.0,
+    "ast_hash": "91b36a7abee708daa4e1de79c721c40a",
+    "semantic_hash": "91b36a7abee708daa4e1de79c721c40a"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/images/le-thanh-vuong-js-fullstack-blockchain.pdf": {
+    "mtime": 1663270750.0,
+    "ast_hash": "91b36a7abee708daa4e1de79c721c40a",
+    "semantic_hash": "91b36a7abee708daa4e1de79c721c40a"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/android-chrome-192x192.png": {
+    "mtime": 1663271116.0,
+    "ast_hash": "2be52472c3b644568cfac19d6ddcd527",
+    "semantic_hash": "2be52472c3b644568cfac19d6ddcd527"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/android-chrome-512x512.png": {
+    "mtime": 1663271116.0,
+    "ast_hash": "977bbed070c3679db438b3e1e5b493c8",
+    "semantic_hash": "977bbed070c3679db438b3e1e5b493c8"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/apple-touch-icon.png": {
+    "mtime": 1663271116.0,
+    "ast_hash": "0b8b8987d16656b8b2a42a94a4a390d8",
+    "semantic_hash": "0b8b8987d16656b8b2a42a94a4a390d8"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/favicon-16x16.png": {
+    "mtime": 1663271116.0,
+    "ast_hash": "aff80aa0a44ed128397e5ea649c7f4cd",
+    "semantic_hash": "aff80aa0a44ed128397e5ea649c7f4cd"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/favicon-32x32.png": {
+    "mtime": 1663271116.0,
+    "ast_hash": "cd587f799dc102d3b0bb510b8e928f04",
+    "semantic_hash": "cd587f799dc102d3b0bb510b8e928f04"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/images/dance.svg": {
+    "mtime": 1663272319.0,
+    "ast_hash": "2d39a31d5d3eb022894758776e68186a",
+    "semantic_hash": "2d39a31d5d3eb022894758776e68186a"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/images/jackbereson.png": {
+    "mtime": 1663271116.0,
+    "ast_hash": "e8895b20c0a9ca5b86917dff33d26635",
+    "semantic_hash": "e8895b20c0a9ca5b86917dff33d26635"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/images/profile.png": {
+    "mtime": 1663271116.0,
+    "ast_hash": "2d1b4b480adf176f8b22039c4c6942d8",
+    "semantic_hash": "2d1b4b480adf176f8b22039c4c6942d8"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/mstile-150x150.png": {
+    "mtime": 1663271116.0,
+    "ast_hash": "ec7f4f8eb38b5f4563812191cf8211c1",
+    "semantic_hash": "ec7f4f8eb38b5f4563812191cf8211c1"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/docs/safari-pinned-tab.svg": {
+    "mtime": 1663271116.0,
+    "ast_hash": "173e105ba393b0dc16422347d3797b8f",
+    "semantic_hash": "173e105ba393b0dc16422347d3797b8f"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/images/android-chrome-192x192.png": {
+    "mtime": 1663270750.0,
+    "ast_hash": "2be52472c3b644568cfac19d6ddcd527",
+    "semantic_hash": "2be52472c3b644568cfac19d6ddcd527"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/images/android-chrome-512x512.png": {
+    "mtime": 1663270750.0,
+    "ast_hash": "977bbed070c3679db438b3e1e5b493c8",
+    "semantic_hash": "977bbed070c3679db438b3e1e5b493c8"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/images/apple-touch-icon.png": {
+    "mtime": 1663270750.0,
+    "ast_hash": "0b8b8987d16656b8b2a42a94a4a390d8",
+    "semantic_hash": "0b8b8987d16656b8b2a42a94a4a390d8"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/images/dance.svg": {
+    "mtime": 1663270750.0,
+    "ast_hash": "2d39a31d5d3eb022894758776e68186a",
+    "semantic_hash": "2d39a31d5d3eb022894758776e68186a"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/images/favicon-16x16.png": {
+    "mtime": 1663270750.0,
+    "ast_hash": "aff80aa0a44ed128397e5ea649c7f4cd",
+    "semantic_hash": "aff80aa0a44ed128397e5ea649c7f4cd"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/images/favicon-32x32.png": {
+    "mtime": 1663270750.0,
+    "ast_hash": "cd587f799dc102d3b0bb510b8e928f04",
+    "semantic_hash": "cd587f799dc102d3b0bb510b8e928f04"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/images/jackbereson.png": {
+    "mtime": 1663270750.0,
+    "ast_hash": "e8895b20c0a9ca5b86917dff33d26635",
+    "semantic_hash": "e8895b20c0a9ca5b86917dff33d26635"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/images/logo.png": {
+    "mtime": 1663270750.0,
+    "ast_hash": "030062c5d3c3a87d87a85ca4ecfeb766",
+    "semantic_hash": "030062c5d3c3a87d87a85ca4ecfeb766"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/images/mstile-150x150.png": {
+    "mtime": 1663270750.0,
+    "ast_hash": "ec7f4f8eb38b5f4563812191cf8211c1",
+    "semantic_hash": "ec7f4f8eb38b5f4563812191cf8211c1"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/images/profile.png": {
+    "mtime": 1663270750.0,
+    "ast_hash": "2d1b4b480adf176f8b22039c4c6942d8",
+    "semantic_hash": "2d1b4b480adf176f8b22039c4c6942d8"
+  },
+  "/Users/jackbereson/Projects/_old/jackbereson.github.io/src/images/safari-pinned-tab.svg": {
+    "mtime": 1663270750.0,
+    "ast_hash": "173e105ba393b0dc16422347d3797b8f",
+    "semantic_hash": "173e105ba393b0dc16422347d3797b8f"
+  }
+}

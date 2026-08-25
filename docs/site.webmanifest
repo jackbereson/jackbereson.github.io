@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Jack Bereson — Senior Fullstack Engineer",
+    "short_name": "Jack Bereson",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#f4f6fc",
+    "background_color": "#f4f6fc",
     "display": "standalone"
 }

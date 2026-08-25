@@ -40,34 +40,137 @@ For pre-rendered pages under `/posts/`, the script src is rewritten to `../commo
 
 ## CSS (inline in `<style>` per page)
 
+### Theming — light is the default
+
+Every page ships **two** token blocks in its inline `<style>`:
+
+- `:root { … }` — the **light** theme (the default) with `color-scheme: light`
+- `html[data-theme="dark"] { … }` — the dark overrides with `color-scheme: dark`
+
+An anti-FOUC boot script sits in `<head>` **before** the `<style>` block and stamps
+`data-theme` from `localStorage` prior to first paint:
+
+```html
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  })();
+</script>
+```
+
+Light is the default deliberately — we do **not** read `prefers-color-scheme`. Only an explicit
+toggle click (persisted to `localStorage.theme`) switches to dark.
+
+The toggle button markup + CSS live in `docs/common.js`, not in the page `<style>` blocks, so they
+aren't duplicated five times. `applyTheme()` there also rewrites `<meta name="theme-color">`
+(`#f4f6fc` light / `#0a0a0a` dark).
+
+**Rule: never hardcode a color that differs between themes.** Add a token to both blocks instead.
+
 ### Design tokens (duplicated in every page — keep them in sync!)
 
 ```css
 :root {
-  --bg:                  #0a0a0a;
-  --bg-2:                #111113;
-  --ink:                 #ffffff;
-  --ink-2:               rgba(255,255,255,0.72);
-  --ink-3:               rgba(255,255,255,0.52);
-  --ink-4:               rgba(255,255,255,0.36);
-  --glass-bg:            rgba(255,255,255,0.06);
-  --glass-bg-strong:     rgba(255,255,255,0.12);
-  --glass-border:        rgba(255,255,255,0.14);
-  --glass-border-strong: rgba(255,255,255,0.22);
+  color-scheme: light;
+
+  --bg:                  #f4f6fc;   /* dark: #0a0a0a */
+  --bg-2:                #ffffff;   /* dark: #111113 */
+  --ink:                 #0b1220;   /* dark: #ffffff */
+  --ink-2:               rgba(11,18,32,0.72);
+  --ink-3:               rgba(11,18,32,0.56);
+  --ink-4:               rgba(11,18,32,0.40);
+  --glass-bg:            rgba(255,255,255,0.70);
+  --glass-bg-strong:     rgba(255,255,255,0.92);
+  --glass-border:        rgba(11,18,32,0.10);
+  --glass-border-strong: rgba(11,18,32,0.18);
+
+  /* Brand accents — identical in both themes */
   --accent-1: #6366f1;  /* indigo */
   --accent-2: #ec4899;  /* pink */
   --accent-3: #f59e0b;  /* amber */
   --accent-4: #10b981;  /* emerald */
+
+  /* Raised surfaces (cards sitting on --bg) */
+  --surf-1: rgba(255,255,255,0.72);
+  --surf-2: rgba(255,255,255,0.86);
+  --surf-3: #ffffff;
+
+  /* Interaction tints laid over a surface */
+  --hov-1: rgba(11,18,32,0.05);
+  --hov-2: rgba(11,18,32,0.09);
+  --hov-3: rgba(11,18,32,0.13);
+  --hov-4: rgba(11,18,32,0.20);
+
+  /* Inverted "solid" buttons */
+  --solid-bg:   #0b1220;
+  --solid-fg:   #ffffff;
+  --solid-glow: rgba(11,18,32,0.22);
+
+  --shadow-1: 0 6px 18px  rgba(11,18,32,0.10);
+  --shadow-2: 0 8px 32px  rgba(11,18,32,0.10);
+  --shadow-3: 0 12px 40px rgba(11,18,32,0.14);
+  --shadow-4: 0 20px 60px rgba(11,18,32,0.18);
+
+  /* Chrome */
+  --nav-bg:        rgba(255,255,255,0.72);
+  --nav-sheen:     rgba(255,255,255,0.90);
+  --menu-bg:       rgba(11,18,32,0.05);
+  --brand-mark-bg: linear-gradient(135deg, rgba(99,102,241,0.22), rgba(236,72,153,0.12));
+  --panel-solid:   #e7eaf5;
+
+  /* Atmosphere (orbs, grid, grain, scanline) */
+  --stage-base:    #eef1fa;
+  --main-mid:      #f2f4fb;
+  --veil-rgb:      238,241,250;   /* used as rgba(var(--veil-rgb), α) in gradients */
+  --orb-opacity:   0.30;
+  --orb-a:         0.20;          /* per-stop alpha; scale with calc(var(--orb-a) * 0.8) */
+  --grid-line:     rgba(99,102,241,0.12);
+  --grid-line-2:   rgba(99,102,241,0.07);
+  --grain-opacity: 0.035;
+  --grain-blend:   multiply;      /* dark: overlay */
+  --beam-core:     rgba(79,70,229,0.75);
+  --beam-fade:     rgba(79,70,229,0);
+  --beam-glow:     0 0 12px rgba(99,102,241,0.45), 0 0 24px rgba(99,102,241,0.25);
+  --hero-shadow-1: none;
+  --hero-shadow-2: none;
+
+  /* Accent text that must stay readable on the page background.
+     The pastel dark-theme accents (#a5b4fc, #c4b5fd …) are invisible on light —
+     always use these for text, never --accent-1..4. */
+  --accent-ink:  #4f46e5;
+  --star-ink:    #b45309;
+  --typing-grad: linear-gradient(135deg, #4f46e5, #c026d3, #0891b2);
+
+  --code-bg: #f1f3fa;
+  --img-bg:  #e7eaf5;
 }
 ```
+
+Page-specific extras: `games.html` adds `--scrim` / `--frame-bg`; `blog-post.html` adds
+`--code-ink` / `--link-underline`; `resume.html` adds a per-hue readable-ink set
+(`--ink-indigo`, `--ink-violet`, `--ink-pink`, `--ink-emerald`, `--ink-cyan`, `--ink-amber`).
+
+### Theming gotchas
+
+- **"Always-dark islands."** Card interiors that sit on a hardcoded dark overlay
+  (`.card-overlay` in `games.html`, `.blog-tint`, `.proj-tint`) must **hardcode** light-on-dark
+  text (`#fff`, `rgba(255,255,255,0.56)`), *not* `var(--ink-*)` — those flip to near-black on
+  light and vanish against the overlay.
+- **`background:` resets `background-clip`.** On an element using `background-clip: text` for
+  gradient text, override with `background-image:`, or the label renders as a solid block.
+- **Nav selector.** `common.js` injects `<header class="nav">`. Style `header.nav`, never
+  `nav.nav` — that mismatch silently disabled the whole nav card on `resume.html` for a while.
 
 ### Typography
 
 - Primary font: **Inter** (300–900), loaded from Google Fonts with `preconnect`.
 - Code font: **JetBrains Mono**, only on pages that render code (`blog-post.html`).
-- Heading gradient pattern:
+- Heading gradient pattern (tokenized so it inverts with the theme):
   ```css
-  background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.75) 100%);
+  background: linear-gradient(135deg, var(--ink) 0%, var(--ink-3) 100%);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
   ```

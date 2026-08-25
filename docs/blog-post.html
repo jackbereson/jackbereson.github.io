@@ -6,7 +6,7 @@
   <title>Loading article… — Jack Bereson</title>
   <meta name="description" content="An article from Jack Bereson's curated engineering blog." />
   <meta name="author" content="Jack Bereson" />
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" content="#f4f6fc" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" id="meta-canonical" href="https://jackbereson.github.io/blog.html" />
 
@@ -34,11 +34,103 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Theme boot — light by default; runs before first paint to avoid a flash. -->
+  <script>
+    (function () {
+      var t = 'light';
+      try { t = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light'; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ─── TOKENS (identical to index.html / blog.html) ─────── */
+    /* ============ THEME TOKENS ============
+       Light is the default. `html[data-theme="dark"]` restores the original
+       dark palette; the boot script in <head> stamps the attribute before
+       first paint, and common.js flips it from the nav toggle. */
     :root {
+      color-scheme: light;
+
+      --bg:                  #f4f6fc;
+      --bg-2:                #ffffff;
+      --ink:                 #0b1220;
+      --ink-2:               rgba(11,18,32,0.72);
+      --ink-3:               rgba(11,18,32,0.56);
+      --ink-4:               rgba(11,18,32,0.40);
+      --glass-bg:            rgba(255,255,255,0.70);
+      --glass-bg-strong:     rgba(255,255,255,0.92);
+      --glass-border:        rgba(11,18,32,0.10);
+      --glass-border-strong: rgba(11,18,32,0.18);
+      --accent-1: #6366f1;
+      --accent-2: #ec4899;
+      --accent-3: #f59e0b;
+      --accent-4: #10b981;
+
+      /* Raised surfaces (cards sitting on --bg) */
+      --surf-1: rgba(255,255,255,0.72);
+      --surf-2: rgba(255,255,255,0.86);
+      --surf-3: #ffffff;
+
+      /* Interaction tints laid over a surface */
+      --hov-1: rgba(11,18,32,0.05);
+      --hov-2: rgba(11,18,32,0.09);
+      --hov-3: rgba(11,18,32,0.13);
+      --hov-4: rgba(11,18,32,0.20);
+
+      /* Inverted "solid" buttons */
+      --solid-bg:   #0b1220;
+      --solid-fg:   #ffffff;
+      --solid-glow: rgba(11,18,32,0.22);
+
+      --shadow-1: 0 6px 18px rgba(11,18,32,0.10);
+      --shadow-2: 0 8px 32px rgba(11,18,32,0.10);
+      --shadow-3: 0 12px 40px rgba(11,18,32,0.14);
+      --shadow-4: 0 20px 60px rgba(11,18,32,0.18);
+
+      /* Chrome */
+      --nav-bg:        rgba(255,255,255,0.72);
+      --nav-sheen:     rgba(255,255,255,0.90);
+      --menu-bg:       rgba(11,18,32,0.05);
+      --brand-mark-bg: linear-gradient(135deg, rgba(99,102,241,0.22), rgba(236,72,153,0.12));
+      --panel-solid:   #e7eaf5;
+
+      /* Atmosphere */
+      --stage-base:    #eef1fa;
+      --main-mid:      #f2f4fb;
+      --veil-rgb:      238,241,250;
+      --orb-opacity:   0.30;
+      --orb-a:         0.20;
+      --grid-line:     rgba(99,102,241,0.12);
+      --grid-line-2:   rgba(99,102,241,0.07);
+      --grain-opacity: 0.035;
+      --grain-blend:   multiply;
+      --beam-core:     rgba(79,70,229,0.75);
+      --beam-fade:     rgba(79,70,229,0);
+      --beam-glow:     0 0 12px rgba(99,102,241,0.45), 0 0 24px rgba(99,102,241,0.25);
+      --hero-shadow-1: none;
+      --hero-shadow-2: none;
+
+      /* Accent text that must stay readable on the page background */
+      --accent-ink: #4f46e5;
+      --star-ink:   #b45309;
+      --typing-grad: linear-gradient(135deg, #4f46e5, #c026d3, #0891b2);
+
+      --code-bg: #f1f3fa;
+      --code-ink: #1f2937;
+      --img-bg:  #e7eaf5;
+      --link-underline: rgba(79,70,229,0.35);
+
+      /* Nav button geometry; the injected .theme-toggle matches it. */
+      --btn-radius: 10px;
+      --btn-size:   34px;
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+
       --bg:                  #0a0a0a;
       --bg-2:                #111113;
       --ink:                 #ffffff;
@@ -49,10 +141,54 @@
       --glass-bg-strong:     rgba(255,255,255,0.12);
       --glass-border:        rgba(255,255,255,0.14);
       --glass-border-strong: rgba(255,255,255,0.22);
-      --accent-1: #6366f1;
-      --accent-2: #ec4899;
-      --accent-3: #f59e0b;
-      --accent-4: #10b981;
+
+      --surf-1: rgba(255,255,255,0.03);
+      --surf-2: rgba(255,255,255,0.06);
+      --surf-3: rgba(255,255,255,0.09);
+
+      --hov-1: rgba(255,255,255,0.08);
+      --hov-2: rgba(255,255,255,0.14);
+      --hov-3: rgba(255,255,255,0.18);
+      --hov-4: rgba(255,255,255,0.32);
+
+      --solid-bg:   #ffffff;
+      --solid-fg:   #0a0a0a;
+      --solid-glow: rgba(255,255,255,0.25);
+
+      --shadow-1: 0 6px 18px rgba(0,0,0,0.35);
+      --shadow-2: 0 8px 32px rgba(0,0,0,0.30);
+      --shadow-3: 0 12px 40px rgba(0,0,0,0.30);
+      --shadow-4: 0 20px 60px rgba(0,0,0,0.50);
+
+      --nav-bg:        rgba(20,20,22,0.45);
+      --nav-sheen:     rgba(255,255,255,0.12);
+      --menu-bg:       rgba(0,0,0,0.30);
+      --brand-mark-bg: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+      --panel-solid:   #0a0a12;
+
+      --stage-base:    #05060f;
+      --main-mid:      #08080f;
+      --veil-rgb:      5,6,15;
+      --orb-opacity:   0.50;
+      --orb-a:         0.30;
+      --grid-line:     rgba(99,102,241,0.06);
+      --grid-line-2:   rgba(148,163,255,0.035);
+      --grain-opacity: 0.05;
+      --grain-blend:   overlay;
+      --beam-core:     rgba(230,240,255,0.95);
+      --beam-fade:     rgba(220,230,255,0);
+      --beam-glow:     0 0 12px rgba(200,220,255,0.7), 0 0 24px rgba(180,200,255,0.4);
+      --hero-shadow-1: 0 2px 40px rgba(0,0,0,0.4);
+      --hero-shadow-2: 0 1px 20px rgba(0,0,0,0.5);
+
+      --accent-ink: #a5b4fc;
+      --star-ink:   #fde68a;
+      --typing-grad: linear-gradient(135deg, #a5b4fc, #f0abfc, #67e8f9);
+
+      --code-bg: #0c0d12;
+      --code-ink: #e5e7eb;
+      --img-bg:  #121217;
+      --link-underline: rgba(196,181,253,0.3);
     }
 
     html { scroll-behavior: smooth; }
@@ -81,7 +217,7 @@
         radial-gradient(ellipse 70% 50% at 20% 10%, rgba(99,102,241,0.22) 0%, transparent 55%),
         radial-gradient(ellipse 60% 50% at 80% 20%, rgba(168,85,247,0.18) 0%, transparent 55%),
         radial-gradient(ellipse 60% 40% at 50% 90%, rgba(6,182,212,0.12) 0%, transparent 55%),
-        #05060f;
+        var(--stage-base);
       overflow: hidden;
     }
     .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.45; pointer-events: none; }
@@ -113,13 +249,13 @@
       transform: translateX(-50%);
       width: calc(100% - 40px); max-width: 1280px;
       z-index: 50;
-      background: rgba(20,20,22,0.45);
+      background: var(--nav-bg);
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
       border: 1px solid var(--glass-border);
       border-radius: 16px;
       padding: 10px 18px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      box-shadow: var(--shadow-2);
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
     .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
@@ -184,7 +320,7 @@
     .art-cat {
       display: inline-block;
       font-size: 11px; font-weight: 700; letter-spacing: .18em;
-      background: linear-gradient(135deg, #a78bfa, #f0abfc);
+      background: var(--typing-grad);
       -webkit-background-clip: text; background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 14px;
@@ -194,7 +330,7 @@
       line-height: 1.08;
       font-weight: 800;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.75) 100%);
+      background: linear-gradient(135deg, var(--ink) 0%, var(--ink-2) 100%);
       -webkit-background-clip: text; background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 18px;
@@ -224,10 +360,10 @@
     .art-cover {
       width: 100%; aspect-ratio: 16/9;
       border-radius: 20px; overflow: hidden;
-      background: #121217 center/cover no-repeat;
+      background: var(--img-bg) center/cover no-repeat;
       border: 1px solid var(--glass-border);
       margin-bottom: 40px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      box-shadow: var(--shadow-4);
     }
 
     /* ─── ARTICLE BODY (dev.to body_html) ─────────── */
@@ -251,18 +387,18 @@
     .art-body h4 { font-size: 1.1em; }
     .art-body p { color: var(--ink-2); }
     .art-body a {
-      color: #c4b5fd;
+      color: var(--accent-ink);
       text-decoration: none;
-      border-bottom: 1px solid rgba(196,181,253,0.3);
+      border-bottom: 1px solid var(--link-underline);
       transition: all .2s ease;
     }
-    .art-body a:hover { color: #fff; border-bottom-color: #a78bfa; }
+    .art-body a:hover { color: var(--ink); border-bottom-color: var(--accent-ink); }
     .art-body ul, .art-body ol { padding-left: 1.4em; }
     .art-body li { margin: .35em 0; }
     .art-body strong { color: var(--ink); }
     .art-body blockquote {
       padding: 12px 18px;
-      border-left: 3px solid #a78bfa;
+      border-left: 3px solid var(--accent-ink);
       background: rgba(168,85,247,0.08);
       border-radius: 0 10px 10px 0;
       color: var(--ink-2);
@@ -281,13 +417,13 @@
       font-size: .88em;
       padding: 2px 7px;
       background: rgba(99,102,241,0.14);
-      color: #c4b5fd;
+      color: var(--accent-ink);
       border: 1px solid rgba(99,102,241,0.2);
       border-radius: 6px;
     }
     .art-body pre {
       font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
-      background: #0c0d12;
+      background: var(--code-bg);
       border: 1px solid var(--glass-border);
       border-radius: 14px;
       padding: 16px 18px;
@@ -297,7 +433,7 @@
     }
     .art-body pre code {
       background: transparent; border: none; padding: 0;
-      color: #e5e7eb; font-size: inherit;
+      color: var(--code-ink); font-size: inherit;
     }
     .art-body hr {
       border: none; height: 1px;
@@ -316,7 +452,7 @@
       border-bottom: 1px solid var(--glass-border);
       text-align: left;
     }
-    .art-body th { background: rgba(255,255,255,0.04); color: var(--ink); }
+    .art-body th { background: var(--surf-1); color: var(--ink); }
     .art-body iframe { max-width: 100%; border-radius: 12px; border: 1px solid var(--glass-border); }
 
     /* Tags + original-source footer */
@@ -371,7 +507,7 @@
     .state p { font-size: 14px; }
     .spinner {
       width: 36px; height: 36px; margin: 0 auto 16px;
-      border: 2px solid rgba(255,255,255,0.1);
+      border: 2px solid var(--glass-border);
       border-top-color: #a78bfa;
       border-radius: 50%;
       animation: spin .9s linear infinite;
@@ -385,7 +521,7 @@
       border-top: 1px solid var(--glass-border);
       color: var(--ink-3);
       font-size: 13px;
-      background: rgba(5,6,15,0.6);
+      background: rgba(var(--veil-rgb),0.6);
     }
     .site-foot .container {
       max-width: 1200px; margin: 0 auto;
@@ -651,7 +787,7 @@
       if (!id) {
         renderState({
           title: 'Missing article id',
-          body:  `No article id in the URL. <a href="./blog.html" style="color:#a78bfa">Return to blog</a>.`,
+          body:  `No article id in the URL. <a href="./blog.html" style="color:var(--accent-ink)">Return to blog</a>.`,
         });
         return;
       }
@@ -668,7 +804,7 @@
         console.error('Article fetch failed:', err);
         renderState({
           title: 'Could not load this post',
-          body:  `${err.message}. <a href="./blog.html" style="color:#a78bfa">Back to all posts</a>.`,
+          body:  `${err.message}. <a href="./blog.html" style="color:var(--accent-ink)">Back to all posts</a>.`,
         });
       }
     }
